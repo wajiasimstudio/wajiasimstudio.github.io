@@ -126,6 +126,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .sec{padding-block:48px}
 }
 </style>
+<link rel="stylesheet" href="../assets/polish.css">
 </head>
 <body>
 <header class="top">
@@ -173,7 +174,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="next">
   <div class="wrap">
     <span class="tag">More work</span>
-    <a href="../#work">[back to work] →</a>
+    <a href="../#work">[back to work] <span class="ar">→</span></a>
   </div>
 </section>
 <footer>
@@ -256,5 +257,6 @@ document.querySelectorAll('.vbtn[data-model]').forEach(b=>b.addEventListener('cl
 document.getElementById('vreset').addEventListener('click',()=>{if(!home)return;camera.position.copy(home.p);controls.target.copy(home.t);controls.update();});
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){start();io.disconnect();}},{rootMargin:'400px'});io.observe(box);}else start();
 </script>
+<script src="../assets/polish.js" defer></script>
 </body>
 </html>
