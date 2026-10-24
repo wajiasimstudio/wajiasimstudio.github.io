@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haveli Hotel · wajiasimstudio</title>
+<meta name="description" content="A 120-room hotel on Egerton Road, Lahore, that reimagines the haveli through fragmented planes drawn from the site. By Wajahat Asim, wajiasimstudio.">
+<meta property="og:title" content="Haveli Hotel · wajiasimstudio">
+<meta property="og:description" content="120-room hotel, Egerton Road, Lahore.">
+<meta property="og:image" content="https://wajiasimstudio.github.io/hotel/img/thumb.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23ff0000'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='22' fill='white' text-anchor='middle'%3E[w]%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* layout: a project sheet — bracketed label column on the left, text and drawings on the right; one black band for the live model */
+:root{
+  --red:#ff0000; --white:#ffffff; --black:#0b0b0b; --grey:#5f5f5f; --rule:#d9d9d9; --paper:#f4f4f4;
+  --display:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--white)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--display);font-size:1.0625rem;line-height:1.6;overflow-x:clip}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* top bar */
+.top{background:var(--red);color:var(--white);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--red)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.bar a{font-weight:700;text-decoration:none}
+.bar nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}
+.bar nav a:hover,.bar .mark:hover{color:var(--black)}
+
+/* project header */
+.head{padding-block:56px 40px}
+.crumb{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.crumb a{text-decoration:none;font-weight:700}
+.crumb a:hover{color:var(--red)}
+.crumb .tag{color:var(--red)}
+h1{font-weight:700;font-size:clamp(2.6rem,7.5vw,6.2rem);line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.sub{font-size:clamp(1.2rem,2.6vw,1.9rem);font-weight:400;letter-spacing:-.01em;margin:14px 0 0;color:var(--grey)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:44px;border-top:4px solid var(--black)}
+.meta div{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);min-width:0}
+.meta dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.meta dd{margin:0;font-size:.98rem;line-height:1.4}
+.hero{margin:0;background:var(--black)}
+.hero img{display:block;width:100%;height:auto;max-height:86vh;object-fit:cover}
+.lead{padding-block:56px 8px}
+.lead p{font-size:clamp(1.25rem,2.3vw,1.7rem);line-height:1.38;letter-spacing:-.012em;font-weight:700;max-width:34ch;margin:0 0 .8em;text-wrap:pretty}
+.lead p + p{font-weight:400;font-size:1.15rem;line-height:1.6;max-width:62ch;letter-spacing:0}
+.lead em{font-style:normal;color:var(--red)}
+.toc{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;padding-top:18px;border-top:1px solid var(--rule)}
+.toc a{text-decoration:none;font-weight:700;font-size:.95rem}
+.toc a:hover{color:var(--red)}
+
+/* sections */
+.sec{padding-block:64px;border-top:1px solid var(--rule)}
+.grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:40px}
+.lab h2{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;letter-spacing:-.025em;margin:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.body{min-width:0;display:flex;flex-direction:column;gap:28px}
+.body > p{margin:0;max-width:66ch;font-size:1.08rem}
+.body h3{font-size:1.25rem;letter-spacing:-.01em;margin:24px 0 -8px}
+.row{display:grid;gap:20px;align-items:start}
+.row.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.row.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fig{margin:0;min-width:0}
+.fig .zoom{display:block;width:100%;padding:0;border:0;background:var(--paper);cursor:zoom-in}
+.fig img{display:block;width:100%;height:auto}
+.fig.tall img{max-height:1100px;object-fit:contain;background:var(--white)}
+.fig figcaption{display:flex;gap:10px;align-items:baseline;font-size:.88rem;line-height:1.4;color:var(--grey);margin-top:8px}
+.fig .n{font-family:var(--mono);font-size:.68rem;color:var(--red);flex:none}
+.fig .zoom:hover img{opacity:.92}
+
+/* model band */
+.sec.dark{background:var(--black);color:var(--white);border-top:0}
+.sec.dark .body > p{color:#cfcfcf}
+.viewer{position:relative;border:1px solid #2b2b2b;background:#f2f2f2;aspect-ratio:16/10;max-width:100%;overflow:hidden}
+#vcanvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#vcanvas:active{cursor:grabbing}
+.vbar{position:absolute;left:12px;top:12px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;right:12px}
+.vbtn{font-family:var(--display);font-weight:700;font-size:.9rem;border:2px solid var(--black);background:var(--white);color:var(--black);padding:7px 12px;cursor:pointer}
+.vbtn.on{background:var(--red);border-color:var(--red);color:var(--white)}
+.vbtn.reset{margin-left:auto}
+.vbtn:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.vstate{position:absolute;inset:auto 12px 12px auto;z-index:2;font-family:var(--mono);font-size:.72rem;color:var(--black);background:rgba(255,255,255,.85);padding:6px 10px}
+.vstate:empty{display:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(11,11,11,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(56px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;background:var(--white)}
+.lb p{color:var(--white);font-size:.95rem;margin:12px 0 0;text-align:center}
+.lb button{position:absolute;font-family:var(--display);font-weight:700;background:var(--white);color:var(--black);border:0;padding:9px 14px;cursor:pointer}
+.lb .x{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(12px,env(safe-area-inset-left,0px));top:50%}
+.lb .nx{right:max(12px,env(safe-area-inset-right,0px));top:50%}
+.lb button:hover{background:var(--red);color:var(--white)}
+
+.lb[hidden]{display:none}
+[hidden]{display:none!important}
+
+/* footer */
+.next{background:var(--red);color:var(--white);padding-block:56px}
+.next .wrap{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.next a{font-weight:700;font-size:clamp(1.6rem,4vw,3rem);letter-spacing:-.03em;text-decoration:none;line-height:1}
+.next a:hover{color:var(--black)}
+footer{background:var(--black);color:var(--white);padding-block:24px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid{grid-template-columns:1fr;gap:20px}
+  .lab h2{position:static}
+  .row.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .viewer{aspect-ratio:4/5}
+  .vbtn.reset{margin-left:0}
+}
+@media (max-width:560px){
+  .row.c2,.row.c3{grid-template-columns:1fr}
+  .head{padding-block:36px 28px}
+  .sec{padding-block:48px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="mark" href="../">[wajiasimstudio]</a>
+    <nav>
+      <a href="../#work">[work]</a>
+      <a href="../#research">[research]</a>
+      <a href="../#about">[about]</a>
+      <a href="../#contact">[contact]</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap head">
+    <div class="crumb"><a href="../#work">← [work]</a><span class="tag">Project 04 · Architecture Design Studio VI</span></div>
+    <h1>Haveli Hotel</h1>
+    <p class="sub">A journey through time on Egerton Road</p>
+    <dl class="meta">
+      <div><dt>Programme</dt><dd>120-room hotel</dd></div>
+      <div><dt>Site</dt><dd>Egerton Road, Lahore</dd></div>
+      <div><dt>Context</dt><dd>Studio VI, IAC Lahore, 2024</dd></div>
+      <div><dt>Levels</dt><dd>Basement and eight floors to +89 ft</dd></div>
+      <div><dt>Coverage</dt><dd>65% on ground, 55% above</dd></div>
+      <div><dt>Concept</dt><dd>The haveli, past against present</dd></div>
+      <div><dt>References</dt><dd>Eisenman, Tschumi, Cantley</dd></div>
+      <div><dt>Tools</dt><dd>Revit, Twinmotion, D5, Photoshop</dd></div>
+    </dl>
+  </div>
+
+  <figure class="hero"><img src="img/hero.jpg" width="2400" height="1011" alt="The hotel at dusk: brick haveli arches below faceted glass and concrete" fetchpriority="high"></figure>
+
+  <div class="wrap lead">
+    <p>The haveli was a way of living: rooms around courts, life turned inward, hospitality as a craft. This hotel brings it back, and lets the <em>present</em> break in.</p>
+    <p>A 120-room hotel on Egerton Road, Lahore. Regulating lines and planes drawn from the site fracture the building, so that guests pass from spaces that recall the grandeur of the haveli into spaces that belong to now.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#site">[site]</a><a href="#concept">[concept]</a><a href="#process">[process]</a><a href="#building">[the building]</a><a href="#drawings">[drawings]</a><a href="#renders">[renders]</a>
+    </nav>
+  </div>
+
+<section class="sec" id="site"><div class="wrap grid"><div class="lab"><h2>[site]</h2></div><div class="body"><p>The site is on Egerton Road in central Lahore, opposite NUML University and next to the Luxus Grand hotel, in a busy metropolitan area. Its immediate context is a dense neighbourhood, with a narrow but secluded approach, a back alley and an old tomb close by. Site A is 3.4 kanals and site B is 22 kanals.</p><p>LDA bylaws require a 30 ft setback at the front and 13 ft on all other sides. They allow 60% ground coverage, 55% of that above ground, and a height limit of 300 ft.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/site-aerial.jpg" data-cap="Egerton Road and its context" aria-label="Enlarge: Egerton Road and its context"><img src="img/site-aerial.jpg" width="2400" height="1440" loading="lazy" decoding="async" alt="Egerton Road and its context"></button><figcaption><span class="n">01</span>Egerton Road and its context</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/site-model.jpg" data-cap="Site model: the two sites, the main road and the neighbourhood" aria-label="Enlarge: Site model: the two sites, the main road and the neighbourhood"><img src="img/site-model.jpg" width="2400" height="1506" loading="lazy" decoding="async" alt="Site model: the two sites, the main road and the neighbourhood"></button><figcaption><span class="n">02</span>Site model: the two sites, the main road and the neighbourhood</figcaption></figure></div></div></section><section class="sec" id="concept"><div class="wrap grid"><div class="lab"><h2>[concept]</h2></div><div class="body"><p>The design reimagines the lost art of manor living in the Indian subcontinent: the haveli. It creates a hotel that sets the past against modern sensibilities.</p><p>As guests move through the hotel, they make a journey through time. Fragmented planes, driven by the site, move them from spaces that recall the grandeur of the haveli to spaces that embrace modernity. This interplay between past and present asks guests to think about the essence of hospitality as it was once cultivated, and proposes its revival through design.</p><p>The project draws on Peter Eisenman's Wexner Center and Guggenheim Helsinki competition entry. It also pays tribute to Bernard Tschumi's architecture and disjunction, Eisenman's blurred zones and Bryan Cantley's speculative coolness.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/case-studies.jpg" data-cap="Case studies: Wexner Center and the Guggenheim Helsinki competition, Peter Eisenman" aria-label="Enlarge: Case studies: Wexner Center and the Guggenheim Helsinki competition, Peter Eisenman"><img src="img/case-studies.jpg" width="2000" height="1418" loading="lazy" decoding="async" alt="Case studies: Wexner Center and the Guggenheim Helsinki competition, Peter Eisenman"></button><figcaption><span class="n">03</span>Case studies: Wexner Center and the Guggenheim Helsinki competition, Peter Eisenman</figcaption></figure></div></div></section><section class="sec" id="process"><div class="wrap grid"><div class="lab"><h2>[process]</h2></div><div class="body"><p>The form comes from the site itself. Regulating lines are drawn from the site and its context, then raised into planes. Where the lines and planes intersect, a fragmented geometry appears, and it becomes the hotel's public heart. The same geometry is carried onto the next site, and the regulating lines continue into the culture centre built earlier in the same studio.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/reg-lines.jpg" data-cap="Site regulating lines" aria-label="Enlarge: Site regulating lines"><img src="img/reg-lines.jpg" width="2000" height="1113" loading="lazy" decoding="async" alt="Site regulating lines"></button><figcaption><span class="n">04</span>Site regulating lines</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/reg-planes.jpg" data-cap="Site regulating planes" aria-label="Enlarge: Site regulating planes"><img src="img/reg-planes.jpg" width="2000" height="1119" loading="lazy" decoding="async" alt="Site regulating planes"></button><figcaption><span class="n">05</span>Site regulating planes</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/reg-intersect.jpg" data-cap="Intersection of planes and lines" aria-label="Enlarge: Intersection of planes and lines"><img src="img/reg-intersect.jpg" width="2000" height="1113" loading="lazy" decoding="async" alt="Intersection of planes and lines"></button><figcaption><span class="n">06</span>Intersection of planes and lines</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/geo-manipulation.jpg" data-cap="Geometric manipulation onto the next site" aria-label="Enlarge: Geometric manipulation onto the next site"><img src="img/geo-manipulation.jpg" width="2000" height="1148" loading="lazy" decoding="async" alt="Geometric manipulation onto the next site"></button><figcaption><span class="n">07</span>Geometric manipulation onto the next site</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/geo-1.jpg" data-cap="Geometry study" aria-label="Enlarge: Geometry study"><img src="img/geo-1.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Geometry study"></button><figcaption><span class="n">08</span>Geometry study</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/geo-2.jpg" data-cap="Geometry study, the fragmented core" aria-label="Enlarge: Geometry study, the fragmented core"><img src="img/geo-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Geometry study, the fragmented core"></button><figcaption><span class="n">09</span>Geometry study, the fragmented core</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/geo-3.jpg" data-cap="Geometry study, low view" aria-label="Enlarge: Geometry study, low view"><img src="img/geo-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Geometry study, low view"></button><figcaption><span class="n">10</span>Geometry study, low view</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/planar.jpg" data-cap="Planar formation" aria-label="Enlarge: Planar formation"><img src="img/planar.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Planar formation"></button><figcaption><span class="n">11</span>Planar formation</figcaption></figure></div><h3>[speculation]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/speculation.jpg" data-cap="Speculation: the red frame inside the haveli" aria-label="Enlarge: Speculation: the red frame inside the haveli"><img src="img/speculation.jpg" width="2000" height="1119" loading="lazy" decoding="async" alt="Speculation: the red frame inside the haveli"></button><figcaption><span class="n">12</span>Speculation: the red frame inside the haveli</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/speculation-collage.jpg" data-cap="Speculative interiors, after Tschumi, Eisenman and Cantley" aria-label="Enlarge: Speculative interiors, after Tschumi, Eisenman and Cantley"><img src="img/speculation-collage.jpg" width="1398" height="2000" loading="lazy" decoding="async" alt="Speculative interiors, after Tschumi, Eisenman and Cantley"></button><figcaption><span class="n">13</span>Speculative interiors, after Tschumi, Eisenman and Cantley</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/lines-context.jpg" data-cap="Lines in context: the regulating lines continued from the culture centre into the hotel" aria-label="Enlarge: Lines in context: the regulating lines continued from the culture centre into the hotel"><img src="img/lines-context.jpg" width="2400" height="1483" loading="lazy" decoding="async" alt="Lines in context: the regulating lines continued from the culture centre into the hotel"></button><figcaption><span class="n">14</span>Lines in context: the regulating lines continued from the culture centre into the hotel</figcaption></figure><h3>[plan iterations]</h3><div class="row c4"><figure class="fig "><button class="zoom" type="button" data-src="img/iter-1.jpg" data-cap="Iteration 1" aria-label="Enlarge: Iteration 1"><img src="img/iter-1.jpg" width="768" height="2000" loading="lazy" decoding="async" alt="Iteration 1"></button><figcaption><span class="n">15</span>Iteration 1</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/iter-2.jpg" data-cap="Iteration 2" aria-label="Enlarge: Iteration 2"><img src="img/iter-2.jpg" width="572" height="2000" loading="lazy" decoding="async" alt="Iteration 2"></button><figcaption><span class="n">16</span>Iteration 2</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/iter-3.jpg" data-cap="Iteration 3" aria-label="Enlarge: Iteration 3"><img src="img/iter-3.jpg" width="589" height="2000" loading="lazy" decoding="async" alt="Iteration 3"></button><figcaption><span class="n">17</span>Iteration 3</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/iter-4.jpg" data-cap="Iteration 4" aria-label="Enlarge: Iteration 4"><img src="img/iter-4.jpg" width="582" height="2000" loading="lazy" decoding="async" alt="Iteration 4"></button><figcaption><span class="n">18</span>Iteration 4</figcaption></figure></div></div></div></section><section class="sec" id="building"><div class="wrap grid"><div class="lab"><h2>[the building]</h2></div><div class="body"><p>A 120-room hotel. The ground floor holds the lobby, restaurant, courtyards, art gallery, seminar rooms and gift shops at the front. The back of the house sits in a separate wing with its own loading deck, inspection route, storage, laundry and kitchen. Room floors rise above around open courts, with a rooftop restaurant and roof garden, an infinity pool, a spa and a skylight bridge at the top.</p><p>The structure is a concrete frame of 1 ft beams and 9 in to 1.5 ft columns with diagonal bracing. Roofs are aluminium-clad concrete on steel framing, and some are green roofs.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/masterplan-context.jpg" data-cap="Master plan: the hotel beside the culture centre" aria-label="Enlarge: Master plan: the hotel beside the culture centre"><img src="img/masterplan-context.jpg" width="2600" height="1437" loading="lazy" decoding="async" alt="Master plan: the hotel beside the culture centre"></button><figcaption><span class="n">19</span>Master plan: the hotel beside the culture centre</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/structure.jpg" data-cap="Structure: frame, roofing and green roof systems" aria-label="Enlarge: Structure: frame, roofing and green roof systems"><img src="img/structure.jpg" width="2400" height="1344" loading="lazy" decoding="async" alt="Structure: frame, roofing and green roof systems"></button><figcaption><span class="n">20</span>Structure: frame, roofing and green roof systems</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/axo-boh.jpg" data-cap="Back of the house services" aria-label="Enlarge: Back of the house services"><img src="img/axo-boh.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Back of the house services"></button><figcaption><span class="n">21</span>Back of the house services</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/boh-2.jpg" data-cap="Back of the house: the loading deck" aria-label="Enlarge: Back of the house: the loading deck"><img src="img/boh-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Back of the house: the loading deck"></button><figcaption><span class="n">22</span>Back of the house: the loading deck</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/boh-1.jpg" data-cap="Back of the house" aria-label="Enlarge: Back of the house"><img src="img/boh-1.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Back of the house"></button><figcaption><span class="n">23</span>Back of the house</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/boh-3.jpg" data-cap="Back of the house: kitchen and storage" aria-label="Enlarge: Back of the house: kitchen and storage"><img src="img/boh-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Back of the house: kitchen and storage"></button><figcaption><span class="n">24</span>Back of the house: kitchen and storage</figcaption></figure></div></div></div></section><section class="sec" id="drawings"><div class="wrap grid"><div class="lab"><h2>[drawings]</h2></div><div class="body"><p>Plans drawn at 1/64 in = 1 ft, the ground floor and master plan at 1/32 in = 1 ft. Levels are in feet.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/plan-master.jpg" data-cap="Master plan" aria-label="Enlarge: Master plan"><img src="img/plan-master.jpg" width="1577" height="2400" loading="lazy" decoding="async" alt="Master plan"></button><figcaption><span class="n">25</span>Master plan</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-gf.jpg" data-cap="Ground floor plan, +5 ft" aria-label="Enlarge: Ground floor plan, +5 ft"><img src="img/plan-gf.jpg" width="1430" height="2112" loading="lazy" decoding="async" alt="Ground floor plan, +5 ft"></button><figcaption><span class="n">26</span>Ground floor plan, +5 ft</figcaption></figure></div><h3>[plans]</h3><div class="row c3"><figure class="fig "><button class="zoom" type="button" data-src="img/plan-b.jpg" data-cap="Basement, −7 ft" aria-label="Enlarge: Basement, −7 ft"><img src="img/plan-b.jpg" width="1364" height="2000" loading="lazy" decoding="async" alt="Basement, −7 ft"></button><figcaption><span class="n">27</span>Basement, −7 ft</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-1.jpg" data-cap="First floor, +17 ft" aria-label="Enlarge: First floor, +17 ft"><img src="img/plan-1.jpg" width="1354" height="2000" loading="lazy" decoding="async" alt="First floor, +17 ft"></button><figcaption><span class="n">28</span>First floor, +17 ft</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-2.jpg" data-cap="Second floor, +29 ft" aria-label="Enlarge: Second floor, +29 ft"><img src="img/plan-2.jpg" width="1344" height="2000" loading="lazy" decoding="async" alt="Second floor, +29 ft"></button><figcaption><span class="n">29</span>Second floor, +29 ft</figcaption></figure></div><div class="row c3"><figure class="fig "><button class="zoom" type="button" data-src="img/plan-3.jpg" data-cap="Third floor, +41 ft" aria-label="Enlarge: Third floor, +41 ft"><img src="img/plan-3.jpg" width="1344" height="2000" loading="lazy" decoding="async" alt="Third floor, +41 ft"></button><figcaption><span class="n">30</span>Third floor, +41 ft</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-4.jpg" data-cap="Fourth floor, +53 ft" aria-label="Enlarge: Fourth floor, +53 ft"><img src="img/plan-4.jpg" width="1354" height="2000" loading="lazy" decoding="async" alt="Fourth floor, +53 ft"></button><figcaption><span class="n">31</span>Fourth floor, +53 ft</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-5.jpg" data-cap="Fifth floor, +65 ft" aria-label="Enlarge: Fifth floor, +65 ft"><img src="img/plan-5.jpg" width="1355" height="2000" loading="lazy" decoding="async" alt="Fifth floor, +65 ft"></button><figcaption><span class="n">32</span>Fifth floor, +65 ft</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/plan-6.jpg" data-cap="Sixth floor, +77 ft" aria-label="Enlarge: Sixth floor, +77 ft"><img src="img/plan-6.jpg" width="1354" height="2000" loading="lazy" decoding="async" alt="Sixth floor, +77 ft"></button><figcaption><span class="n">33</span>Sixth floor, +77 ft</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-7.jpg" data-cap="Seventh floor, +89 ft" aria-label="Enlarge: Seventh floor, +89 ft"><img src="img/plan-7.jpg" width="1355" height="2000" loading="lazy" decoding="async" alt="Seventh floor, +89 ft"></button><figcaption><span class="n">34</span>Seventh floor, +89 ft</figcaption></figure></div><h3>[sections]</h3><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-aa.jpg" data-cap="Section AA&#x27;" aria-label="Enlarge: Section AA&#x27;"><img src="img/sec-aa.jpg" width="3000" height="999" loading="lazy" decoding="async" alt="Section AA&#x27;"></button><figcaption><span class="n">35</span>Section AA&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-bb.jpg" data-cap="Section BB&#x27;" aria-label="Enlarge: Section BB&#x27;"><img src="img/sec-bb.jpg" width="3000" height="1144" loading="lazy" decoding="async" alt="Section BB&#x27;"></button><figcaption><span class="n">36</span>Section BB&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-cc.jpg" data-cap="Section CC&#x27;" aria-label="Enlarge: Section CC&#x27;"><img src="img/sec-cc.jpg" width="3000" height="1104" loading="lazy" decoding="async" alt="Section CC&#x27;"></button><figcaption><span class="n">37</span>Section CC&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-dd.jpg" data-cap="Section DD&#x27;" aria-label="Enlarge: Section DD&#x27;"><img src="img/sec-dd.jpg" width="3000" height="1113" loading="lazy" decoding="async" alt="Section DD&#x27;"></button><figcaption><span class="n">38</span>Section DD&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/section-persp.jpg" data-cap="Section in perspective" aria-label="Enlarge: Section in perspective"><img src="img/section-persp.jpg" width="2600" height="972" loading="lazy" decoding="async" alt="Section in perspective"></button><figcaption><span class="n">39</span>Section in perspective</figcaption></figure><h3>[axonometric]</h3><figure class="fig wide"><button class="zoom" type="button" data-src="img/axo-context.jpg" data-cap="Axonometric in context" aria-label="Enlarge: Axonometric in context"><img src="img/axo-context.jpg" width="2216" height="2400" loading="lazy" decoding="async" alt="Axonometric in context"></button><figcaption><span class="n">40</span>Axonometric in context</figcaption></figure></div></div></section><section class="sec" id="renders"><div class="wrap grid"><div class="lab"><h2>[renders]</h2></div><div class="body"><p>Brick and haveli arches meet exposed concrete and faceted glass. The yellow arcade and the courts belong to the haveli; the angled glass volumes belong to the present.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/hero.jpg" data-cap="The hotel from Egerton Road at dusk" aria-label="Enlarge: The hotel from Egerton Road at dusk"><img src="img/hero.jpg" width="2400" height="1011" loading="lazy" decoding="async" alt="The hotel from Egerton Road at dusk"></button><figcaption><span class="n">41</span>The hotel from Egerton Road at dusk</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/render-1.jpg" data-cap="The pool court from above" aria-label="Enlarge: The pool court from above"><img src="img/render-1.jpg" width="2000" height="1077" loading="lazy" decoding="async" alt="The pool court from above"></button><figcaption><span class="n">42</span>The pool court from above</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/render-2.jpg" data-cap="The yellow arcade" aria-label="Enlarge: The yellow arcade"><img src="img/render-2.jpg" width="2000" height="1077" loading="lazy" decoding="async" alt="The yellow arcade"></button><figcaption><span class="n">43</span>The yellow arcade</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/render-3.jpg" data-cap="Terrace and arches" aria-label="Enlarge: Terrace and arches"><img src="img/render-3.jpg" width="2000" height="1077" loading="lazy" decoding="async" alt="Terrace and arches"></button><figcaption><span class="n">44</span>Terrace and arches</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/render-4.jpg" data-cap="The glass volume and the haveli" aria-label="Enlarge: The glass volume and the haveli"><img src="img/render-4.jpg" width="2000" height="1077" loading="lazy" decoding="async" alt="The glass volume and the haveli"></button><figcaption><span class="n">45</span>The glass volume and the haveli</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/render-5.jpg" data-cap="Between the concrete and the glass" aria-label="Enlarge: Between the concrete and the glass"><img src="img/render-5.jpg" width="2000" height="1077" loading="lazy" decoding="async" alt="Between the concrete and the glass"></button><figcaption><span class="n">46</span>Between the concrete and the glass</figcaption></figure><h3>[clay model]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-plan.jpg" data-cap="Clay model in plan" aria-label="Enlarge: Clay model in plan"><img src="img/clay-plan.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Clay model in plan"></button><figcaption><span class="n">47</span>Clay model in plan</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/clay-section.jpg" data-cap="Clay section" aria-label="Enlarge: Clay section"><img src="img/clay-section.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Clay section"></button><figcaption><span class="n">48</span>Clay section</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-elev.jpg" data-cap="Clay elevation" aria-label="Enlarge: Clay elevation"><img src="img/clay-elev.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Clay elevation"></button><figcaption><span class="n">49</span>Clay elevation</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/clay-structure.jpg" data-cap="Structure model" aria-label="Enlarge: Structure model"><img src="img/clay-structure.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Structure model"></button><figcaption><span class="n">50</span>Structure model</figcaption></figure></div><h3>[maquette]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/maq-1.jpg" data-cap="Maquette" aria-label="Enlarge: Maquette"><img src="img/maq-1.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Maquette"></button><figcaption><span class="n">51</span>Maquette</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/maq-3.jpg" data-cap="Maquette, the fragmented roofs" aria-label="Enlarge: Maquette, the fragmented roofs"><img src="img/maq-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Maquette, the fragmented roofs"></button><figcaption><span class="n">52</span>Maquette, the fragmented roofs</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/maq-2.jpg" data-cap="Maquette, the tower and the terraces" aria-label="Enlarge: Maquette, the tower and the terraces"><img src="img/maq-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Maquette, the tower and the terraces"></button><figcaption><span class="n">53</span>Maquette, the tower and the terraces</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/maq-4.jpg" data-cap="Maquette on its plinth" aria-label="Enlarge: Maquette on its plinth"><img src="img/maq-4.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Maquette on its plinth"></button><figcaption><span class="n">54</span>Maquette on its plinth</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/elev-1.jpg" data-cap="Maquette elevation" aria-label="Enlarge: Maquette elevation"><img src="img/elev-1.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Maquette elevation"></button><figcaption><span class="n">55</span>Maquette elevation</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/elev-2.jpg" data-cap="Maquette elevation, long side" aria-label="Enlarge: Maquette elevation, long side"><img src="img/elev-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Maquette elevation, long side"></button><figcaption><span class="n">56</span>Maquette elevation, long side</figcaption></figure></div></div></div></section>
+</main>
+
+<section class="next">
+  <div class="wrap">
+    <span class="tag">More work</span>
+    <a href="../#work">[back to work] →</a>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span class="tag">© 2026 wajiasimstudio</span><span class="tag">Rawalpindi, Pakistan</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+  <button class="x" type="button" id="lbx">Close</button>
+  <button class="pv" type="button" id="lbp" aria-label="Previous image">←</button>
+  <button class="nx" type="button" id="lbn" aria-label="Next image">→</button>
+</div>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.zoom')), lb=document.getElementById('lb'), img=document.getElementById('lbimg'), cap=document.getElementById('lbcap'), i=0, last=null;
+  function show(k){i=(k+items.length)%items.length;var b=items[i];img.src=b.dataset.src;img.alt=b.dataset.cap;cap.textContent=b.dataset.cap;}
+  function open(k){last=document.activeElement;show(k);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus();}
+  function close(){lb.hidden=true;document.body.style.overflow='';if(last)last.focus();}
+  items.forEach(function(b,k){b.addEventListener('click',function(){open(k);});});
+  document.getElementById('lbx').onclick=close;
+  document.getElementById('lbp').onclick=function(){show(i-1);};
+  document.getElementById('lbn').onclick=function(){show(i+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
+
+
+</body>
+</html>
