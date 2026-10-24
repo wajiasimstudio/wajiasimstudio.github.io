@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Form, Space, and Urbanism · wajiasimstudio</title>
+<meta name="description" content="A walkable, mixed-income housing society on Burki Road, Lahore, drawn from the streets of Androon Lahore. Best Studio Project 2024. By Wajahat Asim, wajiasimstudio.">
+<meta property="og:title" content="Form, Space, and Urbanism · wajiasimstudio">
+<meta property="og:description" content="Urban housing society, Burki Road, Lahore. Best Studio Project 2024.">
+<meta property="og:image" content="https://wajiasimstudio.github.io/urban/img/thumb.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23ff0000'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='22' fill='white' text-anchor='middle'%3E[w]%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* layout: a project sheet — bracketed label column on the left, text and drawings on the right; one black band for the live model */
+:root{
+  --red:#ff0000; --white:#ffffff; --black:#0b0b0b; --grey:#5f5f5f; --rule:#d9d9d9; --paper:#f4f4f4;
+  --display:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--white)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--display);font-size:1.0625rem;line-height:1.6;overflow-x:clip}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* top bar */
+.top{background:var(--red);color:var(--white);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--red)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.bar a{font-weight:700;text-decoration:none}
+.bar nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}
+.bar nav a:hover,.bar .mark:hover{color:var(--black)}
+
+/* project header */
+.head{padding-block:56px 40px}
+.crumb{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.crumb a{text-decoration:none;font-weight:700}
+.crumb a:hover{color:var(--red)}
+.crumb .tag{color:var(--red)}
+h1{font-weight:700;font-size:clamp(2.6rem,7.5vw,6.2rem);line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.sub{font-size:clamp(1.2rem,2.6vw,1.9rem);font-weight:400;letter-spacing:-.01em;margin:14px 0 0;color:var(--grey)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:44px;border-top:4px solid var(--black)}
+.meta div{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);min-width:0}
+.meta dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.meta dd{margin:0;font-size:.98rem;line-height:1.4}
+.hero{margin:0;background:var(--black)}
+.hero img{display:block;width:100%;height:auto;max-height:86vh;object-fit:cover}
+.lead{padding-block:56px 8px}
+.lead p{font-size:clamp(1.25rem,2.3vw,1.7rem);line-height:1.38;letter-spacing:-.012em;font-weight:700;max-width:34ch;margin:0 0 .8em;text-wrap:pretty}
+.lead p + p{font-weight:400;font-size:1.15rem;line-height:1.6;max-width:62ch;letter-spacing:0}
+.lead em{font-style:normal;color:var(--red)}
+.toc{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;padding-top:18px;border-top:1px solid var(--rule)}
+.toc a{text-decoration:none;font-weight:700;font-size:.95rem}
+.toc a:hover{color:var(--red)}
+
+/* sections */
+.sec{padding-block:64px;border-top:1px solid var(--rule)}
+.grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:40px}
+.lab h2{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;letter-spacing:-.025em;margin:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.body{min-width:0;display:flex;flex-direction:column;gap:28px}
+.body > p{margin:0;max-width:66ch;font-size:1.08rem}
+.body h3{font-size:1.25rem;letter-spacing:-.01em;margin:24px 0 -8px}
+.row{display:grid;gap:20px;align-items:start}
+.row.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.row.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fig{margin:0;min-width:0}
+.fig .zoom{display:block;width:100%;padding:0;border:0;background:var(--paper);cursor:zoom-in}
+.fig img{display:block;width:100%;height:auto}
+.fig.tall img{max-height:1100px;object-fit:contain;background:var(--white)}
+.fig figcaption{display:flex;gap:10px;align-items:baseline;font-size:.88rem;line-height:1.4;color:var(--grey);margin-top:8px}
+.fig .n{font-family:var(--mono);font-size:.68rem;color:var(--red);flex:none}
+.fig .zoom:hover img{opacity:.92}
+
+/* model band */
+.sec.dark{background:var(--black);color:var(--white);border-top:0}
+.sec.dark .body > p{color:#cfcfcf}
+.viewer{position:relative;border:1px solid #2b2b2b;background:#f2f2f2;aspect-ratio:16/10;max-width:100%;overflow:hidden}
+#vcanvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#vcanvas:active{cursor:grabbing}
+.vbar{position:absolute;left:12px;top:12px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;right:12px}
+.vbtn{font-family:var(--display);font-weight:700;font-size:.9rem;border:2px solid var(--black);background:var(--white);color:var(--black);padding:7px 12px;cursor:pointer}
+.vbtn.on{background:var(--red);border-color:var(--red);color:var(--white)}
+.vbtn.reset{margin-left:auto}
+.vbtn:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.vstate{position:absolute;inset:auto 12px 12px auto;z-index:2;font-family:var(--mono);font-size:.72rem;color:var(--black);background:rgba(255,255,255,.85);padding:6px 10px}
+.vstate:empty{display:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(11,11,11,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(56px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;background:var(--white)}
+.lb p{color:var(--white);font-size:.95rem;margin:12px 0 0;text-align:center}
+.lb button{position:absolute;font-family:var(--display);font-weight:700;background:var(--white);color:var(--black);border:0;padding:9px 14px;cursor:pointer}
+.lb .x{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(12px,env(safe-area-inset-left,0px));top:50%}
+.lb .nx{right:max(12px,env(safe-area-inset-right,0px));top:50%}
+.lb button:hover{background:var(--red);color:var(--white)}
+
+.lb[hidden]{display:none}
+[hidden]{display:none!important}
+
+.tbl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;font-size:.95rem;font-variant-numeric:tabular-nums}
+.tbl caption{text-align:left;color:var(--red);padding-bottom:8px}
+.tbl th{text-align:left;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);border-bottom:2px solid var(--black);padding:6px 8px 6px 0}
+.tbl td{border-bottom:1px solid var(--rule);padding:8px 8px 8px 0}
+@media (max-width:700px){.tbl{grid-template-columns:1fr}}
+
+/* footer */
+.next{background:var(--red);color:var(--white);padding-block:56px}
+.next .wrap{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.next a{font-weight:700;font-size:clamp(1.6rem,4vw,3rem);letter-spacing:-.03em;text-decoration:none;line-height:1}
+.next a:hover{color:var(--black)}
+footer{background:var(--black);color:var(--white);padding-block:24px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid{grid-template-columns:1fr;gap:20px}
+  .lab h2{position:static}
+  .row.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .viewer{aspect-ratio:4/5}
+  .vbtn.reset{margin-left:0}
+}
+@media (max-width:560px){
+  .row.c2,.row.c3{grid-template-columns:1fr}
+  .head{padding-block:36px 28px}
+  .sec{padding-block:48px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="mark" href="../">[wajiasimstudio]</a>
+    <nav>
+      <a href="../#work">[work]</a>
+      <a href="../#research">[research]</a>
+      <a href="../#about">[about]</a>
+      <a href="../#contact">[contact]</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap head">
+    <div class="crumb"><a href="../#work">← [work]</a><span class="tag">Project 03 · Urban planning and design</span></div>
+    <h1>Form, Space, and Urbanism</h1>
+    <p class="sub">A walkable housing society for Lahore</p>
+    <dl class="meta">
+      <div><dt>Typology</dt><dd>Mixed-income urban housing society</dd></div>
+      <div><dt>Site</dt><dd>Burki Road, opposite DHA Phase VI, Lahore</dd></div>
+      <div><dt>Area</dt><dd>About 2,088,000 sq ft</dd></div>
+      <div><dt>Context</dt><dd>Studio VII, Semester VIII, IAC Lahore, 2024</dd></div>
+      <div><dt>Award</dt><dd>Best Studio Project, 2024</dd></div>
+      <div><dt>Instructor</dt><dd>Shehzil Khurshid</dd></div>
+      <div><dt>Influences</dt><dd>Jane Jacobs; Androon Lahore</dd></div>
+      <div><dt>Tools</dt><dd>Revit, AutoCAD, Twinmotion, Photoshop</dd></div>
+    </dl>
+  </div>
+
+  <figure class="hero"><img src="img/hero.jpg" width="2400" height="1350" alt="Clay model of the site with the red abstracted shapes of Androon Lahore laid over the grid" fetchpriority="high"></figure>
+
+  <div class="wrap lead">
+    <p>A housing society planned around the street, not the plot. The streets of Androon Lahore are taken apart and rebuilt as a network of <em>bridges</em>, ramps and stairs that people want to walk.</p>
+    <p>Following Jane Jacobs, the project treats lively streets as what makes a neighbourhood safe and alive. The Badshahi Mosque, the Lahore Fort and the old city's street network are abstracted and laid over the grid of a new society on the edge of Lahore. The plan mixes housing for every income group with markets, fields, parks and public space.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#brief">[brief]</a><a href="#site">[site]</a><a href="#concept">[concept]</a><a href="#process">[process]</a><a href="#plan">[the masterplan]</a><a href="#drawings">[drawings]</a><a href="#views">[views]</a>
+    </nav>
+  </div>
+
+<section class="sec" id="brief"><div class="wrap grid"><div class="lab"><h2>[brief]</h2></div><div class="body"><p>Design and plan an urban housing society that fosters inclusive, sustainable and culturally vibrant communities, and addresses the diverse socio-economic needs of people in Lahore.</p><p>The masterplan mixes housing for low, middle and high income groups with shared community spaces open to everyone, including the elderly, children and people with disabilities. Local markets, small businesses and co-working hubs support local employment. Public-private partnerships and community-led initiatives keep the society financially viable and give residents a say in it.</p><div class="tbl"><table><caption class="tag">Land use</caption><thead><tr><th>Use</th><th>Area (sq ft)</th><th>Share</th></tr></thead><tbody><tr><td>Open spaces</td><td>719,171</td><td>34%</td></tr><tr><td>Residential</td><td>638,190</td><td>30%</td></tr><tr><td>Roads and circulation</td><td>480,386</td><td>23%</td></tr><tr><td>Commercial</td><td>108,970</td><td>5.2%</td></tr><tr><td>Farming: market and fields</td><td>87,993</td><td>4%</td></tr><tr><td>Mosque</td><td>44,673</td><td>2%</td></tr><tr><td>Services</td><td>41,358</td><td>2%</td></tr></tbody></table><table><caption class="tag">Housing mix</caption><thead><tr><th>Plot</th><th>Units</th><th>Area (sq ft)</th></tr></thead><tbody><tr><td>7 marla</td><td>158</td><td>248,850</td></tr><tr><td>10 marla</td><td>56</td><td>126,000</td></tr><tr><td>1 kanal</td><td>18</td><td>81,000</td></tr><tr><td>Apartments</td><td>40% of housing area</td><td>182,340</td></tr></tbody></table></div></div></div></section><section class="sec" id="site"><div class="wrap grid"><div class="lab"><h2>[site]</h2></div><div class="body"><p>The site is on Burki Road, opposite DHA Phase VI, on the eastern edge of Lahore. It sits between farmland and the planned grid of a new housing society, so it faces the choice between the endless grid and something more alive.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/site-aerial.jpg" data-cap="Burki Road and DHA Phase VI, aerial" aria-label="Enlarge: Burki Road and DHA Phase VI, aerial"><img src="img/site-aerial.jpg" width="2400" height="1376" loading="lazy" decoding="async" alt="Burki Road and DHA Phase VI, aerial"></button><figcaption><span class="n">01</span>Burki Road and DHA Phase VI, aerial</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/site-1.jpg" data-cap="The site, model" aria-label="Enlarge: The site, model"><img src="img/site-1.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The site, model"></button><figcaption><span class="n">02</span>The site, model</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/site-2.jpg" data-cap="The site along Burki Road" aria-label="Enlarge: The site along Burki Road"><img src="img/site-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The site along Burki Road"></button><figcaption><span class="n">03</span>The site along Burki Road</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/site-3.jpg" data-cap="The site edge" aria-label="Enlarge: The site edge"><img src="img/site-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The site edge"></button><figcaption><span class="n">04</span>The site edge</figcaption></figure></div></div></section><section class="sec" id="concept"><div class="wrap grid"><div class="lab"><h2>[concept]</h2></div><div class="body"><p>The project starts from Jane Jacobs' critique of conventional planning: vibrant streets make cities safe and lively. It looks for that street life in the organic movement of people through the markets and neighbourhoods of Androon Lahore.</p><p>Walkability is the core of the design. Ramps, bridges and staircases improve access, and they also mark striking thresholds through the community. They break the monotony of the built environment and invite residents to explore.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/androon-aerial.jpg" data-cap="Androon Lahore, aerial" aria-label="Enlarge: Androon Lahore, aerial"><img src="img/androon-aerial.jpg" width="2400" height="1266" loading="lazy" decoding="async" alt="Androon Lahore, aerial"></button><figcaption><span class="n">05</span>Androon Lahore, aerial</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/sketch-androon.jpg" data-cap="Sketch: the density of Androon Lahore" aria-label="Enlarge: Sketch: the density of Androon Lahore"><img src="img/sketch-androon.jpg" width="2000" height="1413" loading="lazy" decoding="async" alt="Sketch: the density of Androon Lahore"></button><figcaption><span class="n">06</span>Sketch: the density of Androon Lahore</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/sketch-street.jpg" data-cap="Sketch: a street in Androon Lahore" aria-label="Enlarge: Sketch: a street in Androon Lahore"><img src="img/sketch-street.jpg" width="1355" height="2000" loading="lazy" decoding="async" alt="Sketch: a street in Androon Lahore"></button><figcaption><span class="n">07</span>Sketch: a street in Androon Lahore</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/abstraction.jpg" data-cap="Badshahi Mosque, Lahore Fort and the street network of Androon Lahore" aria-label="Enlarge: Badshahi Mosque, Lahore Fort and the street network of Androon Lahore"><img src="img/abstraction.jpg" width="2000" height="1871" loading="lazy" decoding="async" alt="Badshahi Mosque, Lahore Fort and the street network of Androon Lahore"></button><figcaption><span class="n">08</span>Badshahi Mosque, Lahore Fort and the street network of Androon Lahore</figcaption></figure></div></div></div></section><section class="sec" id="process"><div class="wrap grid"><div class="lab"><h2>[process]</h2></div><div class="body"><p>The first phase steps away from conventional planning. Shapes from Androon Lahore are broken down to their most essential state: the Badshahi Mosque, the Lahore Fort and the street network of the old city. As in most of the studio's work, the aim is to capture the essence of something rather than imitate it or place it as it is.</p><p>The shapes of the mosque and the fort are cut loose from the road network, then sheared, rotated, dismantled and disfigured. The result is a new architectural system that keeps the original sense of the shapes. These drawings are then superimposed on the site together with the surrounding grid.</p><p>The speculative phase gives the abstract shapes physical form, to understand both the masses and the space they leave around them. The circular plane, for instance, became a pedestrian bridge looking over a circular central park.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/abstract-shapes.jpg" data-cap="Abstraction of Androon Lahore" aria-label="Enlarge: Abstraction of Androon Lahore"><img src="img/abstract-shapes.jpg" width="2000" height="1626" loading="lazy" decoding="async" alt="Abstraction of Androon Lahore"></button><figcaption><span class="n">09</span>Abstraction of Androon Lahore</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/grid-roads.jpg" data-cap="The surrounding grid regulated onto the site" aria-label="Enlarge: The surrounding grid regulated onto the site"><img src="img/grid-roads.jpg" width="1880" height="2000" loading="lazy" decoding="async" alt="The surrounding grid regulated onto the site"></button><figcaption><span class="n">10</span>The surrounding grid regulated onto the site</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/superimposition.jpg" data-cap="The abstract shapes and the grid superimposed" aria-label="Enlarge: The abstract shapes and the grid superimposed"><img src="img/superimposition.jpg" width="2400" height="1419" loading="lazy" decoding="async" alt="The abstract shapes and the grid superimposed"></button><figcaption><span class="n">11</span>The abstract shapes and the grid superimposed</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/grid-site.jpg" data-cap="Grids of the context, juxtaposed" aria-label="Enlarge: Grids of the context, juxtaposed"><img src="img/grid-site.jpg" width="2000" height="1700" loading="lazy" decoding="async" alt="Grids of the context, juxtaposed"></button><figcaption><span class="n">12</span>Grids of the context, juxtaposed</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/juxtapose.jpg" data-cap="Juxtaposing all grids on the site" aria-label="Enlarge: Juxtaposing all grids on the site"><img src="img/juxtapose.jpg" width="2000" height="1992" loading="lazy" decoding="async" alt="Juxtaposing all grids on the site"></button><figcaption><span class="n">13</span>Juxtaposing all grids on the site</figcaption></figure></div><h3>[speculative urbanism]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/spec-1.jpg" data-cap="Speculative model: shapes over the grid" aria-label="Enlarge: Speculative model: shapes over the grid"><img src="img/spec-1.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Speculative model: shapes over the grid"></button><figcaption><span class="n">14</span>Speculative model: shapes over the grid</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/spec-3.jpg" data-cap="Speculative model: the circle and the shards" aria-label="Enlarge: Speculative model: the circle and the shards"><img src="img/spec-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Speculative model: the circle and the shards"></button><figcaption><span class="n">15</span>Speculative model: the circle and the shards</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/spec-4.jpg" data-cap="Speculative model, close up" aria-label="Enlarge: Speculative model, close up"><img src="img/spec-4.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Speculative model, close up"></button><figcaption><span class="n">16</span>Speculative model, close up</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/spec-2.jpg" data-cap="Speculative model, the long bars" aria-label="Enlarge: Speculative model, the long bars"><img src="img/spec-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Speculative model, the long bars"></button><figcaption><span class="n">17</span>Speculative model, the long bars</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/spec-5.jpg" data-cap="Speculative model in white" aria-label="Enlarge: Speculative model in white"><img src="img/spec-5.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Speculative model in white"></button><figcaption><span class="n">18</span>Speculative model in white</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/spec-6.jpg" data-cap="The circular plane as a public space" aria-label="Enlarge: The circular plane as a public space"><img src="img/spec-6.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The circular plane as a public space"></button><figcaption><span class="n">19</span>The circular plane as a public space</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/spec-axo-1.jpg" data-cap="Speculative axonometric" aria-label="Enlarge: Speculative axonometric"><img src="img/spec-axo-1.jpg" width="2000" height="1830" loading="lazy" decoding="async" alt="Speculative axonometric"></button><figcaption><span class="n">20</span>Speculative axonometric</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/spec-axo-4.jpg" data-cap="Speculative axonometric: the circle" aria-label="Enlarge: Speculative axonometric: the circle"><img src="img/spec-axo-4.jpg" width="2000" height="1440" loading="lazy" decoding="async" alt="Speculative axonometric: the circle"></button><figcaption><span class="n">21</span>Speculative axonometric: the circle</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/spec-axo-2.jpg" data-cap="From speculation to bridge" aria-label="Enlarge: From speculation to bridge"><img src="img/spec-axo-2.jpg" width="2000" height="1307" loading="lazy" decoding="async" alt="From speculation to bridge"></button><figcaption><span class="n">22</span>From speculation to bridge</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/spec-axo-3.jpg" data-cap="The bridge over the road" aria-label="Enlarge: The bridge over the road"><img src="img/spec-axo-3.jpg" width="2000" height="1182" loading="lazy" decoding="async" alt="The bridge over the road"></button><figcaption><span class="n">23</span>The bridge over the road</figcaption></figure></div><h3>[from fragment to building]</h3><figure class="fig wide"><button class="zoom" type="button" data-src="img/transform-1.jpg" data-cap="Fragments of the fort and mosque becoming the bridge and the circular park" aria-label="Enlarge: Fragments of the fort and mosque becoming the bridge and the circular park"><img src="img/transform-1.jpg" width="2400" height="856" loading="lazy" decoding="async" alt="Fragments of the fort and mosque becoming the bridge and the circular park"></button><figcaption><span class="n">24</span>Fragments of the fort and mosque becoming the bridge and the circular park</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/transform-2.jpg" data-cap="Fragments becoming the amphitheatre ring" aria-label="Enlarge: Fragments becoming the amphitheatre ring"><img src="img/transform-2.jpg" width="2400" height="791" loading="lazy" decoding="async" alt="Fragments becoming the amphitheatre ring"></button><figcaption><span class="n">25</span>Fragments becoming the amphitheatre ring</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/transform-3.jpg" data-cap="A fragment becoming a building" aria-label="Enlarge: A fragment becoming a building"><img src="img/transform-3.jpg" width="2400" height="790" loading="lazy" decoding="async" alt="A fragment becoming a building"></button><figcaption><span class="n">26</span>A fragment becoming a building</figcaption></figure></div></div></section><section class="sec" id="plan"><div class="wrap grid"><div class="lab"><h2>[the masterplan]</h2></div><div class="body"><p>The plan holds residences in 7 marla, 10 marla and 1 kanal plots, along with apartments, commercial blocks and offices. Its public spaces include parks, a central public park and a site-integrated playground. A farmers' market sits beside working agricultural fields. The mosque, graveyard, library and multipurpose courts are spread through the plan, with security, fire, water and waste services at the edges.</p><p>A red pedestrian network of bridges, ramps and stairs threads through the housing and over the road. It ties the circular park, the amphitheatre, the market and the commercial core together, so residents can walk the whole society.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/masterplan.jpg" data-cap="Masterplan" aria-label="Enlarge: Masterplan"><img src="img/masterplan.jpg" width="2800" height="1570" loading="lazy" decoding="async" alt="Masterplan"></button><figcaption><span class="n">27</span>Masterplan</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/aerial-1.jpg" data-cap="The bridge and the circular park" aria-label="Enlarge: The bridge and the circular park"><img src="img/aerial-1.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The bridge and the circular park"></button><figcaption><span class="n">28</span>The bridge and the circular park</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/aerial-2.jpg" data-cap="The bridge crossing the housing" aria-label="Enlarge: The bridge crossing the housing"><img src="img/aerial-2.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The bridge crossing the housing"></button><figcaption><span class="n">29</span>The bridge crossing the housing</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/aerial-3.jpg" data-cap="Commercial blocks and parking" aria-label="Enlarge: Commercial blocks and parking"><img src="img/aerial-3.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Commercial blocks and parking"></button><figcaption><span class="n">30</span>Commercial blocks and parking</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/aerial-4.jpg" data-cap="Housing, courts and green" aria-label="Enlarge: Housing, courts and green"><img src="img/aerial-4.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Housing, courts and green"></button><figcaption><span class="n">31</span>Housing, courts and green</figcaption></figure></div></div></div></section><section class="sec" id="drawings"><div class="wrap grid"><div class="lab"><h2>[drawings]</h2></div><div class="body"><p>Drawings are not to scale.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/axo-1.jpg" data-cap="Axonometric of the masterplan" aria-label="Enlarge: Axonometric of the masterplan"><img src="img/axo-1.jpg" width="2800" height="1074" loading="lazy" decoding="async" alt="Axonometric of the masterplan"></button><figcaption><span class="n">32</span>Axonometric of the masterplan</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/axo-2.jpg" data-cap="Axonometric illustration" aria-label="Enlarge: Axonometric illustration"><img src="img/axo-2.jpg" width="2800" height="1090" loading="lazy" decoding="async" alt="Axonometric illustration"></button><figcaption><span class="n">33</span>Axonometric illustration</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/section-persp.jpg" data-cap="Perspective section" aria-label="Enlarge: Perspective section"><img src="img/section-persp.jpg" width="3000" height="593" loading="lazy" decoding="async" alt="Perspective section"></button><figcaption><span class="n">34</span>Perspective section</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/section-1.jpg" data-cap="Section through the bridge and the park" aria-label="Enlarge: Section through the bridge and the park"><img src="img/section-1.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Section through the bridge and the park"></button><figcaption><span class="n">35</span>Section through the bridge and the park</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/section-2.jpg" data-cap="Section through the bridge" aria-label="Enlarge: Section through the bridge"><img src="img/section-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Section through the bridge"></button><figcaption><span class="n">36</span>Section through the bridge</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/section-3.jpg" data-cap="Section through the commercial core" aria-label="Enlarge: Section through the commercial core"><img src="img/section-3.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Section through the commercial core"></button><figcaption><span class="n">37</span>Section through the commercial core</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/gate-plan.jpg" data-cap="Gate, plan" aria-label="Enlarge: Gate, plan"><img src="img/gate-plan.jpg" width="2000" height="761" loading="lazy" decoding="async" alt="Gate, plan"></button><figcaption><span class="n">38</span>Gate, plan</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/gate-section.jpg" data-cap="Gate, section" aria-label="Enlarge: Gate, section"><img src="img/gate-section.jpg" width="2000" height="523" loading="lazy" decoding="async" alt="Gate, section"></button><figcaption><span class="n">39</span>Gate, section</figcaption></figure></div></div></div></section><section class="sec" id="views"><div class="wrap grid"><div class="lab"><h2>[views]</h2></div><div class="body"><p>Views at street level and from above, kept in white with the pedestrian network in red.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/view-1.jpg" data-cap="The bridge over the street" aria-label="Enlarge: The bridge over the street"><img src="img/view-1.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The bridge over the street"></button><figcaption><span class="n">40</span>The bridge over the street</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/view-2.jpg" data-cap="Under the bridge, the plaza" aria-label="Enlarge: Under the bridge, the plaza"><img src="img/view-2.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Under the bridge, the plaza"></button><figcaption><span class="n">41</span>Under the bridge, the plaza</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/view-3.jpg" data-cap="Stairs up to the bridge" aria-label="Enlarge: Stairs up to the bridge"><img src="img/view-3.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Stairs up to the bridge"></button><figcaption><span class="n">42</span>Stairs up to the bridge</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/view-4.jpg" data-cap="The amphitheatre edge" aria-label="Enlarge: The amphitheatre edge"><img src="img/view-4.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The amphitheatre edge"></button><figcaption><span class="n">43</span>The amphitheatre edge</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/view-5.jpg" data-cap="Commercial street" aria-label="Enlarge: Commercial street"><img src="img/view-5.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Commercial street"></button><figcaption><span class="n">44</span>Commercial street</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/view-6.jpg" data-cap="Stepped seating in the park" aria-label="Enlarge: Stepped seating in the park"><img src="img/view-6.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Stepped seating in the park"></button><figcaption><span class="n">45</span>Stepped seating in the park</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/view-7.jpg" data-cap="Terraces and walkways" aria-label="Enlarge: Terraces and walkways"><img src="img/view-7.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Terraces and walkways"></button><figcaption><span class="n">46</span>Terraces and walkways</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/view-8.jpg" data-cap="Along the park" aria-label="Enlarge: Along the park"><img src="img/view-8.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Along the park"></button><figcaption><span class="n">47</span>Along the park</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/view-9.jpg" data-cap="Burki Road and the bridge" aria-label="Enlarge: Burki Road and the bridge"><img src="img/view-9.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Burki Road and the bridge"></button><figcaption><span class="n">48</span>Burki Road and the bridge</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/view-10.jpg" data-cap="The bridge along the parking" aria-label="Enlarge: The bridge along the parking"><img src="img/view-10.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The bridge along the parking"></button><figcaption><span class="n">49</span>The bridge along the parking</figcaption></figure></div><h3>[clay model]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-1.jpg" data-cap="The bridge and the circular park" aria-label="Enlarge: The bridge and the circular park"><img src="img/clay-1.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The bridge and the circular park"></button><figcaption><span class="n">50</span>The bridge and the circular park</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/clay-2.jpg" data-cap="The ring and the bridge" aria-label="Enlarge: The ring and the bridge"><img src="img/clay-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The ring and the bridge"></button><figcaption><span class="n">51</span>The ring and the bridge</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-3.jpg" data-cap="The bridge from above" aria-label="Enlarge: The bridge from above"><img src="img/clay-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The bridge from above"></button><figcaption><span class="n">52</span>The bridge from above</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/clay-4.jpg" data-cap="The circle and its walkway" aria-label="Enlarge: The circle and its walkway"><img src="img/clay-4.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The circle and its walkway"></button><figcaption><span class="n">53</span>The circle and its walkway</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-5.jpg" data-cap="The whole society" aria-label="Enlarge: The whole society"><img src="img/clay-5.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The whole society"></button><figcaption><span class="n">54</span>The whole society</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/clay-6.jpg" data-cap="Housing blocks" aria-label="Enlarge: Housing blocks"><img src="img/clay-6.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Housing blocks"></button><figcaption><span class="n">55</span>Housing blocks</figcaption></figure></div><h3>[digital maquette]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/model-1.jpg" data-cap="Maquette: the circular park" aria-label="Enlarge: Maquette: the circular park"><img src="img/model-1.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Maquette: the circular park"></button><figcaption><span class="n">56</span>Maquette: the circular park</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/model-2.jpg" data-cap="Maquette: the commercial core" aria-label="Enlarge: Maquette: the commercial core"><img src="img/model-2.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Maquette: the commercial core"></button><figcaption><span class="n">57</span>Maquette: the commercial core</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/model-3.jpg" data-cap="Maquette: the bridge" aria-label="Enlarge: Maquette: the bridge"><img src="img/model-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Maquette: the bridge"></button><figcaption><span class="n">58</span>Maquette: the bridge</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/model-4.jpg" data-cap="Maquette: the whole site" aria-label="Enlarge: Maquette: the whole site"><img src="img/model-4.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Maquette: the whole site"></button><figcaption><span class="n">59</span>Maquette: the whole site</figcaption></figure></div></div></div></section>
+</main>
+
+<section class="next">
+  <div class="wrap">
+    <span class="tag">More work</span>
+    <a href="../#work">[back to work] →</a>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span class="tag">© 2026 wajiasimstudio</span><span class="tag">Rawalpindi, Pakistan</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+  <button class="x" type="button" id="lbx">Close</button>
+  <button class="pv" type="button" id="lbp" aria-label="Previous image">←</button>
+  <button class="nx" type="button" id="lbn" aria-label="Next image">→</button>
+</div>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.zoom')), lb=document.getElementById('lb'), img=document.getElementById('lbimg'), cap=document.getElementById('lbcap'), i=0, last=null;
+  function show(k){i=(k+items.length)%items.length;var b=items[i];img.src=b.dataset.src;img.alt=b.dataset.cap;cap.textContent=b.dataset.cap;}
+  function open(k){last=document.activeElement;show(k);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus();}
+  function close(){lb.hidden=true;document.body.style.overflow='';if(last)last.focus();}
+  items.forEach(function(b,k){b.addEventListener('click',function(){open(k);});});
+  document.getElementById('lbx').onclick=close;
+  document.getElementById('lbp').onclick=function(){show(i-1);};
+  document.getElementById('lbn').onclick=function(){show(i+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
+
+
+</body>
+</html>
