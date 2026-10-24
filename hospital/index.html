@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Architecture of Surgical Forms · wajiasimstudio</title>
+<meta name="description" content="A 250-bed secondary hospital beside the River Ravi, Lahore, planned with the precision of a surgical machine. By Wajahat Asim, wajiasimstudio.">
+<meta property="og:title" content="The Architecture of Surgical Forms · wajiasimstudio">
+<meta property="og:description" content="250-bed secondary hospital, River Ravi, Lahore.">
+<meta property="og:image" content="https://wajiasimstudio.github.io/hospital/img/thumb.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23ff0000'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='22' fill='white' text-anchor='middle'%3E[w]%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* layout: a project sheet — bracketed label column on the left, text and drawings on the right; one black band for the live model */
+:root{
+  --red:#ff0000; --white:#ffffff; --black:#0b0b0b; --grey:#5f5f5f; --rule:#d9d9d9; --paper:#f4f4f4;
+  --display:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--white)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--display);font-size:1.0625rem;line-height:1.6;overflow-x:clip}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* top bar */
+.top{background:var(--red);color:var(--white);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--red)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.bar a{font-weight:700;text-decoration:none}
+.bar nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}
+.bar nav a:hover,.bar .mark:hover{color:var(--black)}
+
+/* project header */
+.head{padding-block:56px 40px}
+.crumb{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.crumb a{text-decoration:none;font-weight:700}
+.crumb a:hover{color:var(--red)}
+.crumb .tag{color:var(--red)}
+h1{font-weight:700;font-size:clamp(2.6rem,7.5vw,6.2rem);line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.sub{font-size:clamp(1.2rem,2.6vw,1.9rem);font-weight:400;letter-spacing:-.01em;margin:14px 0 0;color:var(--grey)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:44px;border-top:4px solid var(--black)}
+.meta div{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);min-width:0}
+.meta dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.meta dd{margin:0;font-size:.98rem;line-height:1.4}
+.hero{margin:0;background:var(--black)}
+.hero img{display:block;width:100%;height:auto;max-height:86vh;object-fit:cover}
+.lead{padding-block:56px 8px}
+.lead p{font-size:clamp(1.25rem,2.3vw,1.7rem);line-height:1.38;letter-spacing:-.012em;font-weight:700;max-width:34ch;margin:0 0 .8em;text-wrap:pretty}
+.lead p + p{font-weight:400;font-size:1.15rem;line-height:1.6;max-width:62ch;letter-spacing:0}
+.lead em{font-style:normal;color:var(--red)}
+.toc{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;padding-top:18px;border-top:1px solid var(--rule)}
+.toc a{text-decoration:none;font-weight:700;font-size:.95rem}
+.toc a:hover{color:var(--red)}
+
+/* sections */
+.sec{padding-block:64px;border-top:1px solid var(--rule)}
+.grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:40px}
+.lab h2{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;letter-spacing:-.025em;margin:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.body{min-width:0;display:flex;flex-direction:column;gap:28px}
+.body > p{margin:0;max-width:66ch;font-size:1.08rem}
+.body h3{font-size:1.25rem;letter-spacing:-.01em;margin:24px 0 -8px}
+.row{display:grid;gap:20px;align-items:start}
+.row.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.row.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fig{margin:0;min-width:0}
+.fig .zoom{display:block;width:100%;padding:0;border:0;background:var(--paper);cursor:zoom-in}
+.fig img{display:block;width:100%;height:auto}
+.fig.tall img{max-height:1100px;object-fit:contain;background:var(--white)}
+.fig figcaption{display:flex;gap:10px;align-items:baseline;font-size:.88rem;line-height:1.4;color:var(--grey);margin-top:8px}
+.fig .n{font-family:var(--mono);font-size:.68rem;color:var(--red);flex:none}
+.fig .zoom:hover img{opacity:.92}
+
+/* model band */
+.sec.dark{background:var(--black);color:var(--white);border-top:0}
+.sec.dark .body > p{color:#cfcfcf}
+.viewer{position:relative;border:1px solid #2b2b2b;background:#f2f2f2;aspect-ratio:16/10;max-width:100%;overflow:hidden}
+#vcanvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#vcanvas:active{cursor:grabbing}
+.vbar{position:absolute;left:12px;top:12px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;right:12px}
+.vbtn{font-family:var(--display);font-weight:700;font-size:.9rem;border:2px solid var(--black);background:var(--white);color:var(--black);padding:7px 12px;cursor:pointer}
+.vbtn.on{background:var(--red);border-color:var(--red);color:var(--white)}
+.vbtn.reset{margin-left:auto}
+.vbtn:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.vstate{position:absolute;inset:auto 12px 12px auto;z-index:2;font-family:var(--mono);font-size:.72rem;color:var(--black);background:rgba(255,255,255,.85);padding:6px 10px}
+.vstate:empty{display:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(11,11,11,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(56px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;background:var(--white)}
+.lb p{color:var(--white);font-size:.95rem;margin:12px 0 0;text-align:center}
+.lb button{position:absolute;font-family:var(--display);font-weight:700;background:var(--white);color:var(--black);border:0;padding:9px 14px;cursor:pointer}
+.lb .x{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(12px,env(safe-area-inset-left,0px));top:50%}
+.lb .nx{right:max(12px,env(safe-area-inset-right,0px));top:50%}
+.lb button:hover{background:var(--red);color:var(--white)}
+
+.lb[hidden]{display:none}
+[hidden]{display:none!important}
+
+/* footer */
+.next{background:var(--red);color:var(--white);padding-block:56px}
+.next .wrap{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.next a{font-weight:700;font-size:clamp(1.6rem,4vw,3rem);letter-spacing:-.03em;text-decoration:none;line-height:1}
+.next a:hover{color:var(--black)}
+footer{background:var(--black);color:var(--white);padding-block:24px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid{grid-template-columns:1fr;gap:20px}
+  .lab h2{position:static}
+  .row.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .viewer{aspect-ratio:4/5}
+  .vbtn.reset{margin-left:0}
+}
+@media (max-width:560px){
+  .row.c2,.row.c3{grid-template-columns:1fr}
+  .head{padding-block:36px 28px}
+  .sec{padding-block:48px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="mark" href="../">[wajiasimstudio]</a>
+    <nav>
+      <a href="../#work">[work]</a>
+      <a href="../#research">[research]</a>
+      <a href="../#about">[about]</a>
+      <a href="../#contact">[contact]</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap head">
+    <div class="crumb"><a href="../#work">← [work]</a><span class="tag">Project 02 · Architecture Design Studio VII</span></div>
+    <h1>The Architecture of Surgical Forms</h1>
+    <p class="sub">A secondary hospital on the River Ravi</p>
+    <dl class="meta">
+      <div><dt>Programme</dt><dd>250-bed secondary hospital</dd></div>
+      <div><dt>Site</dt><dd>Siddique Pura, River Ravi, Lahore</dd></div>
+      <div><dt>Context</dt><dd>Studio VII, Semester VIII, IAC Lahore, 2025</dd></div>
+      <div><dt>Levels</dt><dd>Two lower ground floors and six above</dd></div>
+      <div><dt>Concept</dt><dd>The surgical machine</dd></div>
+      <div><dt>Site analysis</dt><dd>In pairs; site model with Hassan Ali</dd></div>
+      <div><dt>Tools</dt><dd>Revit, AutoCAD, Twinmotion, Photoshop</dd></div>
+      <div><dt>Units</dt><dd>Feet</dd></div>
+    </dl>
+  </div>
+
+  <figure class="hero"><img src="img/hero.jpg" width="1920" height="1080" alt="White clay render of the hospital on its sloping site" fetchpriority="high"></figure>
+
+  <div class="wrap lead">
+    <p>A surgical machine has no wasted parts. Every arm, joint and panel is there because it does something. This project asks a hospital to work the <em>same</em> way.</p>
+    <p>A 250-bed secondary hospital on the contoured bank of the River Ravi, Lahore. The forms of surgical machines were the starting point, but the design is driven by function: departments, flows and services planned as tightly and as clearly as the machines that inspired them.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#site">[site]</a><a href="#concept">[concept]</a><a href="#building">[the building]</a><a href="#model">[3d model]</a><a href="#drawings">[drawings]</a><a href="#renders">[renders]</a>
+    </nav>
+  </div>
+
+<section class="sec" id="site"><div class="wrap grid"><div class="lab"><h2>[site]</h2></div><div class="body"><p>The site is at Siddique Pura, beside the River Ravi on the edge of Lahore. The ground is contoured, with alluvial soil over rocky substrata. Around it is a mixed lower-middle and middle class neighbourhood next to a densely built part of the city, with the river, a wooded belt and the road network close by.</p><p>Site analysis was done in pairs, and the digital site model was built together with Hassan Ali. The hospital itself is an individual project.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/site-model.jpg" data-cap="Digital site model: the river, the forest and the site" aria-label="Enlarge: Digital site model: the river, the forest and the site"><img src="img/site-model.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Digital site model: the river, the forest and the site"></button><figcaption><span class="n">01</span>Digital site model: the river, the forest and the site</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/site-model-city.jpg" data-cap="The city edge and the river" aria-label="Enlarge: The city edge and the river"><img src="img/site-model-city.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The city edge and the river"></button><figcaption><span class="n">02</span>The city edge and the river</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/site-model-road.jpg" data-cap="The road and the ravine" aria-label="Enlarge: The road and the ravine"><img src="img/site-model-road.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The road and the ravine"></button><figcaption><span class="n">03</span>The road and the ravine</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/site-model-ravine.jpg" data-cap="The ravine running through the site" aria-label="Enlarge: The ravine running through the site"><img src="img/site-model-ravine.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="The ravine running through the site"></button><figcaption><span class="n">04</span>The ravine running through the site</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/site-model-forest.jpg" data-cap="The forest belt" aria-label="Enlarge: The forest belt"><img src="img/site-model-forest.jpg" width="2000" height="1124" loading="lazy" decoding="async" alt="The forest belt"></button><figcaption><span class="n">05</span>The forest belt</figcaption></figure></div></div></div></section><section class="sec" id="concept"><div class="wrap grid"><div class="lab"><h2>[concept]</h2></div><div class="body"><p>The starting point was the surgical machine: the robotic surgical arm, the C-arm scanner, the anaesthesia machine. Each is built around a precise function, with nothing in it that does not work. The project asked whether a hospital could be planned with the same precision.</p><p>The machines here are downloaded 3D models, studied rather than designed. Placed side by side, they produced a speculative elevation, a skyline made only of medical equipment. The building that followed does not copy any machine. The aim was the essence of one: tight, efficient planning in which every department sits where it works best.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/machines.jpg" data-cap="Surgical machine studies" aria-label="Enlarge: Surgical machine studies"><img src="img/machines.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Surgical machine studies"></button><figcaption><span class="n">06</span>Surgical machine studies</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/machine-arm.jpg" data-cap="Robotic surgical arm" aria-label="Enlarge: Robotic surgical arm"><img src="img/machine-arm.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Robotic surgical arm"></button><figcaption><span class="n">07</span>Robotic surgical arm</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/machine-scanner.jpg" data-cap="Scanner" aria-label="Enlarge: Scanner"><img src="img/machine-scanner.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Scanner"></button><figcaption><span class="n">08</span>Scanner</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/machine-2.jpg" data-cap="Machine study" aria-label="Enlarge: Machine study"><img src="img/machine-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Machine study"></button><figcaption><span class="n">09</span>Machine study</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/machine-3.jpg" data-cap="Anaesthesia machine" aria-label="Enlarge: Anaesthesia machine"><img src="img/machine-3.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Anaesthesia machine"></button><figcaption><span class="n">10</span>Anaesthesia machine</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/spec-elev-1.jpg" data-cap="Speculative elevation: machines juxtaposed" aria-label="Enlarge: Speculative elevation: machines juxtaposed"><img src="img/spec-elev-1.jpg" width="2000" height="792" loading="lazy" decoding="async" alt="Speculative elevation: machines juxtaposed"></button><figcaption><span class="n">11</span>Speculative elevation: machines juxtaposed</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/spec-elev-2.jpg" data-cap="Speculative elevation, variation" aria-label="Enlarge: Speculative elevation, variation"><img src="img/spec-elev-2.jpg" width="2000" height="762" loading="lazy" decoding="async" alt="Speculative elevation, variation"></button><figcaption><span class="n">12</span>Speculative elevation, variation</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/spec-elev-3.jpg" data-cap="Speculative elevation, a single cluster" aria-label="Enlarge: Speculative elevation, a single cluster"><img src="img/spec-elev-3.jpg" width="2000" height="837" loading="lazy" decoding="async" alt="Speculative elevation, a single cluster"></button><figcaption><span class="n">13</span>Speculative elevation, a single cluster</figcaption></figure></div></div></div></section><section class="sec" id="building"><div class="wrap grid"><div class="lab"><h2>[the building]</h2></div><div class="body"><p>A 250-bed secondary hospital is arranged as a long wing and a stepped tower, connected by bridges. Two lower ground floors are cut into the slope, with six floors above. The lower floors hold the departments that need direct access, such as emergency, outpatients and services. Wards, the operation theatre complex, ICU, maternity and terraces are stacked above.</p><p>Each department is planned around its own flow, so patients, staff and services move along separate routes. The section steps down with the ground towards the river.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/axo-programme.jpg" data-cap="Programme axonometric" aria-label="Enlarge: Programme axonometric"><img src="img/axo-programme.jpg" width="2400" height="1897" loading="lazy" decoding="async" alt="Programme axonometric"></button><figcaption><span class="n">14</span>Programme axonometric</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/axo-exploded.jpg" data-cap="Exploded axonometric, floor by floor" aria-label="Enlarge: Exploded axonometric, floor by floor"><img src="img/axo-exploded.jpg" width="845" height="2400" loading="lazy" decoding="async" alt="Exploded axonometric, floor by floor"></button><figcaption><span class="n">15</span>Exploded axonometric, floor by floor</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-aerial.jpg" data-cap="Clay model, aerial" aria-label="Enlarge: Clay model, aerial"><img src="img/clay-aerial.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Clay model, aerial"></button><figcaption><span class="n">16</span>Clay model, aerial</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/clay-bridge.jpg" data-cap="The bridge between the wing and the tower" aria-label="Enlarge: The bridge between the wing and the tower"><img src="img/clay-bridge.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The bridge between the wing and the tower"></button><figcaption><span class="n">17</span>The bridge between the wing and the tower</figcaption></figure></div></div></div></section><section class="sec dark" id="model"><div class="wrap grid"><div class="lab"><h2>[3d model]</h2></div><div class="body"><p>The final Revit model, without furniture, doors or services. Drag to orbit, scroll or pinch to zoom, right-drag to pan.</p><div class="viewer" id="viewer"><div class="vbar" role="group" aria-label="Model controls"><button type="button" class="vbtn on" data-model="model/hospital.glb" aria-pressed="true">[hospital]</button><button type="button" class="vbtn reset" id="vreset">[reset view]</button></div><canvas id="vcanvas" aria-label="Interactive 3D model of the hospital"></canvas><div class="vstate" id="vstate">Loading model…</div></div></div></div></section><section class="sec" id="drawings"><div class="wrap grid"><div class="lab"><h2>[drawings]</h2></div><div class="body"><p>Nine levels, from the second lower ground floor to the sixth floor. Drawings are in feet.</p><figure class="fig wide tall"><button class="zoom" type="button" data-src="img/plan-site.jpg" data-cap="Ground floor plan in its site, with the river to the east" aria-label="Enlarge: Ground floor plan in its site, with the river to the east"><img src="img/plan-site.jpg" width="1438" height="2400" loading="lazy" decoding="async" alt="Ground floor plan in its site, with the river to the east"></button><figcaption><span class="n">18</span>Ground floor plan in its site, with the river to the east</figcaption></figure><h3>[plans]</h3><div class="row c3"><figure class="fig "><button class="zoom" type="button" data-src="img/plan-lg2.jpg" data-cap="Lower ground 2" aria-label="Enlarge: Lower ground 2"><img src="img/plan-lg2.jpg" width="1246" height="2000" loading="lazy" decoding="async" alt="Lower ground 2"></button><figcaption><span class="n">19</span>Lower ground 2</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-lg1.jpg" data-cap="Lower ground 1" aria-label="Enlarge: Lower ground 1"><img src="img/plan-lg1.jpg" width="1247" height="2000" loading="lazy" decoding="async" alt="Lower ground 1"></button><figcaption><span class="n">20</span>Lower ground 1</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-gf.jpg" data-cap="Ground floor" aria-label="Enlarge: Ground floor"><img src="img/plan-gf.jpg" width="1246" height="2000" loading="lazy" decoding="async" alt="Ground floor"></button><figcaption><span class="n">21</span>Ground floor</figcaption></figure></div><div class="row c3"><figure class="fig "><button class="zoom" type="button" data-src="img/plan-ff.jpg" data-cap="First floor" aria-label="Enlarge: First floor"><img src="img/plan-ff.jpg" width="1245" height="2000" loading="lazy" decoding="async" alt="First floor"></button><figcaption><span class="n">22</span>First floor</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-sf.jpg" data-cap="Second floor" aria-label="Enlarge: Second floor"><img src="img/plan-sf.jpg" width="1246" height="2000" loading="lazy" decoding="async" alt="Second floor"></button><figcaption><span class="n">23</span>Second floor</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-tf.jpg" data-cap="Third floor" aria-label="Enlarge: Third floor"><img src="img/plan-tf.jpg" width="1246" height="2000" loading="lazy" decoding="async" alt="Third floor"></button><figcaption><span class="n">24</span>Third floor</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/plan-4f.jpg" data-cap="Fourth floor" aria-label="Enlarge: Fourth floor"><img src="img/plan-4f.jpg" width="1246" height="2000" loading="lazy" decoding="async" alt="Fourth floor"></button><figcaption><span class="n">25</span>Fourth floor</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/plan-6f.jpg" data-cap="Sixth floor" aria-label="Enlarge: Sixth floor"><img src="img/plan-6f.jpg" width="1246" height="2000" loading="lazy" decoding="async" alt="Sixth floor"></button><figcaption><span class="n">26</span>Sixth floor</figcaption></figure></div><h3>[sections]</h3><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-aa.jpg" data-cap="Section AA&#x27;" aria-label="Enlarge: Section AA&#x27;"><img src="img/sec-aa.jpg" width="3000" height="970" loading="lazy" decoding="async" alt="Section AA&#x27;"></button><figcaption><span class="n">27</span>Section AA&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-bb.jpg" data-cap="Section BB&#x27;" aria-label="Enlarge: Section BB&#x27;"><img src="img/sec-bb.jpg" width="3000" height="970" loading="lazy" decoding="async" alt="Section BB&#x27;"></button><figcaption><span class="n">28</span>Section BB&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-cc.jpg" data-cap="Section CC&#x27;" aria-label="Enlarge: Section CC&#x27;"><img src="img/sec-cc.jpg" width="3000" height="957" loading="lazy" decoding="async" alt="Section CC&#x27;"></button><figcaption><span class="n">29</span>Section CC&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/sec-dd.jpg" data-cap="Section DD&#x27;" aria-label="Enlarge: Section DD&#x27;"><img src="img/sec-dd.jpg" width="3000" height="970" loading="lazy" decoding="async" alt="Section DD&#x27;"></button><figcaption><span class="n">30</span>Section DD&#x27;</figcaption></figure><h3>[elevations]</h3><figure class="fig wide"><button class="zoom" type="button" data-src="img/elev-1.jpg" data-cap="Elevation" aria-label="Enlarge: Elevation"><img src="img/elev-1.jpg" width="3000" height="901" loading="lazy" decoding="async" alt="Elevation"></button><figcaption><span class="n">31</span>Elevation</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/elev-2.jpg" data-cap="Elevation" aria-label="Enlarge: Elevation"><img src="img/elev-2.jpg" width="3000" height="898" loading="lazy" decoding="async" alt="Elevation"></button><figcaption><span class="n">32</span>Elevation</figcaption></figure><h3>[axonometrics]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/axo-site-1.jpg" data-cap="Axonometric in context" aria-label="Enlarge: Axonometric in context"><img src="img/axo-site-1.jpg" width="2400" height="2296" loading="lazy" decoding="async" alt="Axonometric in context"></button><figcaption><span class="n">33</span>Axonometric in context</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/axo-site-2.jpg" data-cap="Axonometric along the river edge" aria-label="Enlarge: Axonometric along the river edge"><img src="img/axo-site-2.jpg" width="2400" height="2097" loading="lazy" decoding="async" alt="Axonometric along the river edge"></button><figcaption><span class="n">34</span>Axonometric along the river edge</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/axo-site-3.jpg" data-cap="Axonometric from the road" aria-label="Enlarge: Axonometric from the road"><img src="img/axo-site-3.jpg" width="2400" height="1697" loading="lazy" decoding="async" alt="Axonometric from the road"></button><figcaption><span class="n">35</span>Axonometric from the road</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/axo-site-4.jpg" data-cap="Axonometric, plan oblique" aria-label="Enlarge: Axonometric, plan oblique"><img src="img/axo-site-4.jpg" width="2400" height="2260" loading="lazy" decoding="async" alt="Axonometric, plan oblique"></button><figcaption><span class="n">36</span>Axonometric, plan oblique</figcaption></figure></div></div></div></section><section class="sec" id="renders"><div class="wrap grid"><div class="lab"><h2>[renders]</h2></div><div class="body"><p>Clay renders, kept white to show the form, the stepping and the depth of the facades.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/clay-site.jpg" data-cap="The hospital on its site" aria-label="Enlarge: The hospital on its site"><img src="img/clay-site.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The hospital on its site"></button><figcaption><span class="n">37</span>The hospital on its site</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-wing.jpg" data-cap="The long wing" aria-label="Enlarge: The long wing"><img src="img/clay-wing.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The long wing"></button><figcaption><span class="n">38</span>The long wing</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/clay-facade.jpg" data-cap="Facade detail" aria-label="Enlarge: Facade detail"><img src="img/clay-facade.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Facade detail"></button><figcaption><span class="n">39</span>Facade detail</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/clay-facade-2.jpg" data-cap="Facade and bridges" aria-label="Enlarge: Facade and bridges"><img src="img/clay-facade-2.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Facade and bridges"></button><figcaption><span class="n">40</span>Facade and bridges</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/hero.jpg" data-cap="The building from the north" aria-label="Enlarge: The building from the north"><img src="img/hero.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="The building from the north"></button><figcaption><span class="n">41</span>The building from the north</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/int-ward.jpg" data-cap="Ward" aria-label="Enlarge: Ward"><img src="img/int-ward.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Ward"></button><figcaption><span class="n">42</span>Ward</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/int-consult.jpg" data-cap="Consultation room" aria-label="Enlarge: Consultation room"><img src="img/int-consult.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Consultation room"></button><figcaption><span class="n">43</span>Consultation room</figcaption></figure></div></div></div></section>
+</main>
+
+<section class="next">
+  <div class="wrap">
+    <span class="tag">More work</span>
+    <a href="../#work">[back to work] →</a>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span class="tag">© 2026 wajiasimstudio</span><span class="tag">Rawalpindi, Pakistan</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+  <button class="x" type="button" id="lbx">Close</button>
+  <button class="pv" type="button" id="lbp" aria-label="Previous image">←</button>
+  <button class="nx" type="button" id="lbn" aria-label="Next image">→</button>
+</div>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.zoom')), lb=document.getElementById('lb'), img=document.getElementById('lbimg'), cap=document.getElementById('lbcap'), i=0, last=null;
+  function show(k){i=(k+items.length)%items.length;var b=items[i];img.src=b.dataset.src;img.alt=b.dataset.cap;cap.textContent=b.dataset.cap;}
+  function open(k){last=document.activeElement;show(k);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus();}
+  function close(){lb.hidden=true;document.body.style.overflow='';if(last)last.focus();}
+  items.forEach(function(b,k){b.addEventListener('click',function(){open(k);});});
+  document.getElementById('lbx').onclick=close;
+  document.getElementById('lbp').onclick=function(){show(i-1);};
+  document.getElementById('lbn').onclick=function(){show(i+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
+
+<script type="importmap">{"imports":{"three":"../assets/three/build/three.module.min.js","three/addons/":"../assets/three/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+
+const box=document.getElementById('viewer'), canvas=document.getElementById('vcanvas'), state=document.getElementById('vstate');
+let renderer, scene, camera, controls, current=null, home=null, started=false;
+const cache={};
+const loader=new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('../assets/three/jsm/libs/draco/'));
+const surface=new THREE.MeshStandardMaterial({color:0xefefef,roughness:.92,metalness:0,side:THREE.DoubleSide,flatShading:true,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1});
+const lines=new THREE.LineBasicMaterial({color:0x1a1a1a});
+
+function size(){const w=box.clientWidth,h=box.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+function frame(obj){
+  const b=new THREE.Box3().setFromObject(obj),c=b.getCenter(new THREE.Vector3()),r=b.getSize(new THREE.Vector3()).length();
+  controls.target.copy(c);camera.near=r/200;camera.far=r*20;camera.updateProjectionMatrix();
+  camera.position.set(c.x+r*.72,c.y+r*.62,c.z+r*.72);controls.update();
+  home={p:camera.position.clone(),t:c.clone()};
+}
+function build(gltf){
+  const g=gltf.scene;g.rotation.x=-Math.PI/2;
+  g.traverse(m=>{if(m.isMesh){m.material=surface;m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry,28),lines));}});
+  return g;
+}
+function load(url){
+  state.textContent='Loading model…';
+  const done=obj=>{if(current)scene.remove(current);current=obj;scene.add(obj);obj.updateMatrixWorld(true);frame(obj);state.textContent='';};
+  if(cache[url]){done(cache[url]);return;}
+  loader.load(url,g=>{state.textContent='Preparing edges…';setTimeout(()=>{cache[url]=build(g);done(cache[url]);},30);},
+    e=>{if(e.total)state.textContent='Loading model… '+Math.round(e.loaded/e.total*100)+'%';},
+    ()=>{state.textContent='The model could not load. Try refreshing the page.';});
+}
+function start(){
+  if(started)return;started=true;
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true});}catch(e){state.textContent='3D needs WebGL, which this browser has turned off.';return;}
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  scene=new THREE.Scene();scene.background=new THREE.Color(0xf2f2f2);
+  camera=new THREE.PerspectiveCamera(32,1,.1,1000);
+  scene.add(new THREE.HemisphereLight(0xffffff,0x8a8a8a,2.3));
+  const sun=new THREE.DirectionalLight(0xffffff,1.5);sun.position.set(2,3,1.4);scene.add(sun);
+  controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.08;controls.maxPolarAngle=Math.PI*.495;
+  size();new ResizeObserver(size).observe(box);
+  renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
+  load('model/hospital.glb');
+}
+document.querySelectorAll('.vbtn[data-model]').forEach(b=>b.addEventListener('click',()=>{
+  start();document.querySelectorAll('.vbtn[data-model]').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b);});load(b.dataset.model);
+}));
+document.getElementById('vreset').addEventListener('click',()=>{if(!home)return;camera.position.copy(home.p);controls.target.copy(home.t);controls.update();});
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){start();io.disconnect();}},{rootMargin:'400px'});io.observe(box);}else start();
+</script>
+</body>
+</html>
