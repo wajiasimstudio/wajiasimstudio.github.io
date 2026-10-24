@@ -10,7 +10,7 @@
 
   // reveal on scroll
   if(!rm && 'IntersectionObserver' in window){
-    var sel=['.head','.intro','.slot','.note','.about .lead','.about > div > p','.hello','.bio','.portrait','.cv > div','.email','#contact .row',
+    var sel=['.head','.intro','.slot','.note','.about .lead','.about > div > p','.hello','.bio','.portrait','.statement','.cv > div','.email','#contact .row',
              '.lab h2','.fig','.body > p','.body > h3','.meta > div','.lead p','.toc','.viewer','.tbl','.next .wrap'].join(',');
     var els=[].slice.call(d.querySelectorAll(sel));
     h.classList.add('js');
