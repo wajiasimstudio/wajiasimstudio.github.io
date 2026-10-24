@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="wajiasimstudio is an architecture and research practice based in Rawalpindi, Pakistan, founded by architectural designer Wajahat Asim, working with critical theory, deconstruction, tectonics and culture.">
+<meta property="og:title" content="wajiasimstudio">
+<meta property="og:description" content="Architecture and research practice based in Rawalpindi, Pakistan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23ff0000'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='22' fill='white' text-anchor='middle'%3E[w]%3C/text%3E%3C/svg%3E">
+<title>wajiasimstudio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* layout: the logo as a system — stacked bracketed words on solid red, one element rotated off the grid; white and black bands alternate below */
+:root{
+  --red:#ff0000; --white:#ffffff; --black:#0b0b0b; --grey:#6b6b6b; --line:#0b0b0b;
+  --display:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --body:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --tilt:38deg;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--red)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--white);color:var(--black);font-family:var(--body);font-size:1.0625rem;line-height:1.55;overflow-x:clip}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--black);outline-offset:3px}
+.band-red a:focus-visible,.band-black a:focus-visible{outline-color:var(--white)}
+.tag{font-family:var(--mono);font-size:.75rem;letter-spacing:.02em}
+
+/* bands */
+.band-red{background:var(--red);color:var(--white)}
+.band-black{background:var(--black);color:var(--white)}
+.band-white{background:var(--white);color:var(--black)}
+
+/* nav */
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px;flex-wrap:wrap}
+.bar .mark{font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{font-family:var(--display);font-weight:700;font-size:.95rem;text-decoration:none}
+nav a:hover{color:var(--black)}
+
+/* hero = the logo, enlarged */
+.hero{position:relative;padding-block:48px 40px;overflow:hidden}
+.logo{margin:0;line-height:0}
+.logo svg{width:clamp(240px,40vw,500px);height:auto;max-width:100%;display:block;overflow:visible}
+.logo text{font-family:var(--display);font-weight:700;fill:var(--white)}
+.logo .s{font-weight:400}
+.logo .small{position:absolute;font-family:var(--display);font-weight:400;font-size:clamp(.8rem,2.2vw,1.4rem);letter-spacing:0;transform:rotate(var(--tilt));transform-origin:left top}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:40px;align-items:end}
+.hero-copy{font-size:1.15rem;line-height:1.45;max-width:30ch;padding-bottom:24px}
+.hero-copy b{display:block;font-size:.8rem;font-family:var(--mono);font-weight:500;margin-bottom:12px}
+
+/* section heads */
+section{padding-block:72px}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:4px solid currentColor;padding-bottom:14px;margin-bottom:36px}
+.head h2{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,6vw,4.2rem);line-height:1;letter-spacing:-.03em;margin:0}
+.head h2 em{font-style:normal;color:var(--red)}
+
+/* work slots */
+.slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.slot{aspect-ratio:4/3;max-width:100%;border:3px solid var(--black);display:flex;flex-direction:column;justify-content:space-between;padding:16px;position:relative;overflow:hidden}
+.slot .n{font-family:var(--display);font-weight:700;font-size:2.4rem;line-height:1;letter-spacing:-.03em}
+.slot .r{position:absolute;right:-30px;top:40%;transform:rotate(var(--tilt));font-family:var(--display);font-weight:700;color:var(--red);font-size:1.4rem;white-space:nowrap}
+.slot:hover{background:var(--red);color:var(--white);border-color:var(--red)}
+.slot:hover .r{color:var(--white)}
+
+/* research */
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-left:1px solid #333}
+.note{padding:4px 24px 8px;border-right:1px solid #333;display:flex;flex-direction:column;gap:12px;min-width:0}
+.note .tag{color:var(--red)}
+.note h3{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1.05;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.note p{margin:0;color:#cfcfcf;font-size:1rem;max-width:40ch}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
+.about .lead{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;letter-spacing:-.02em;margin:0 0 20px;text-wrap:balance}
+.about .lead em{font-style:normal;color:var(--red)}
+.about p{margin:0 0 1em;max-width:58ch}
+.cv{border-top:4px solid var(--black)}
+.side{display:flex;flex-direction:column;gap:32px;min-width:0}
+.portrait{margin:0;position:relative;aspect-ratio:4/5;max-width:100%;background:#e9e9e9;border:3px solid var(--black);overflow:hidden;display:flex;align-items:flex-end;padding:14px}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08)}
+.portrait figcaption{position:relative;font-family:var(--display);font-weight:700;background:var(--red);color:var(--white);padding:4px 8px}
+.bio h3{font-family:var(--display);font-weight:700;font-size:1.3rem;margin:28px 0 10px}
+.cv div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding-block:13px;border-bottom:1px solid var(--black)}
+.cv span:first-child{font-family:var(--mono);font-size:.78rem;color:var(--red);padding-top:2px;font-variant-numeric:tabular-nums}
+
+/* contact */
+.email{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,5.4vw,4rem);letter-spacing:-.03em;line-height:1.05;overflow-wrap:anywhere;user-select:all;margin-bottom:28px}
+.row{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center}
+button.copy{font-family:var(--display);font-weight:700;font-size:1rem;background:var(--white);color:var(--red);border:0;padding:12px 18px;cursor:pointer}
+button.copy:hover{background:var(--black);color:var(--white)}
+.row a{font-family:var(--display);font-weight:700;font-size:1.05rem;text-decoration:none;border-bottom:3px solid var(--white);padding-bottom:2px}
+.row a:hover{border-color:var(--black)}
+
+footer{padding-block:28px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .hero{padding-block:32px 32px}
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .slots,.notes,.about{grid-template-columns:1fr}
+  .notes{border-left:0}
+  .note{border-right:0;border-top:1px solid #333;padding:22px 0}
+  section{padding-block:56px}
+}
+
+/* professional pass */
+.tag{text-transform:uppercase;letter-spacing:.08em;font-size:.7rem}
+.hero-copy{font-size:1.2rem;max-width:32ch}
+.hero-copy b{margin-bottom:14px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{font-family:var(--display);font-weight:700;font-size:.95rem;text-decoration:none;padding:12px 18px;border:2px solid var(--white)}
+.btn.solid{background:var(--white);color:var(--red)}
+.btn:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.slot .t{font-family:var(--display);font-weight:700;font-size:1.1rem}
+.intro{max-width:60ch;margin:0 0 32px;font-size:1.1rem}
+.band-black .intro{color:#cfcfcf}
+.cv span:first-child{text-transform:uppercase;letter-spacing:.06em;font-size:.72rem}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+
+<div class="band-red">
+  <div class="wrap bar">
+    <a class="mark" href="#top">[wajiasimstudio]</a>
+    <nav>
+      <a href="#work">[work]</a>
+      <a href="#research">[research]</a>
+      <a href="#about">[about]</a>
+      <a href="#contact">[contact]</a>
+    </nav>
+  </div>
+
+  <header class="wrap hero" id="top">
+    <div class="hero-grid">
+      <h1 class="logo" aria-label="wajiasimstudio">
+        <svg viewBox="0 0 420 590" aria-hidden="true">
+          <text x="0" y="104" font-size="120" letter-spacing="-2">[waji]</text>
+          <text x="0" y="224" font-size="120" letter-spacing="-2">[asim]</text>
+          <g transform="translate(80 248) rotate(35)">
+            <text x="0" y="100" font-size="120" letter-spacing="-2">[studio]</text>
+            <text class="s" x="270" y="-12" font-size="24">[wajiasim]</text>
+          </g>
+        </svg>
+      </h1>
+      <div class="hero-copy">
+        <b class="tag">Architecture · Research · Discourse</b>
+        An architecture and research practice based in Rawalpindi, Pakistan, working at the intersection of critical theory, deconstruction, tectonics and culture.
+        <div class="cta">
+          <a class="btn solid" href="#work">View work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main>
+  <section id="work" class="band-white">
+    <div class="wrap">
+      <div class="head"><h2>[work]</h2><span class="tag">2023–2026</span></div>
+      <p class="intro">Selected projects in cultural, residential, healthcare and interior architecture. Full project documentation will be published here shortly.</p>
+      <div class="slots">
+        <div class="slot"><span class="n">[01]</span><span class="t">Project forthcoming</span></div>
+        <div class="slot"><span class="n">[02]</span><span class="t">Project forthcoming</span></div>
+        <div class="slot"><span class="n">[03]</span><span class="t">Project forthcoming</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="band-black">
+    <div class="wrap">
+      <div class="head"><h2>[research]</h2><span class="tag">Instagram · YouTube</span></div>
+      <p class="intro">Alongside built and speculative work, the studio publishes ongoing research into architectural theory and tectonics.</p>
+      <div class="notes">
+        <div class="note">
+          <span class="tag">Essay series</span>
+          <h3>Notes On</h3>
+          <p>Short essays on originality, deconstructivism, provocation and tectonics, built around simple questions that test assumptions architects rarely examine.</p>
+        </div>
+        <div class="note">
+          <span class="tag">Prototype series · 5 dwellings</span>
+          <h3>Architecture is not assembled. It is consequential.</h3>
+          <p>Five dwelling prototypes that test tectonics, sustainability, kinetics, artificial intelligence and the human body as a structural participant.</p>
+        </div>
+        <div class="note">
+          <span class="tag">Ongoing · F-7 Markaz, Islamabad</span>
+          <h3>Charpai Prototypes</h3>
+          <p>Street furniture derived from the charpai, developed in steel, timber and concrete under a single principle: tectonic honesty, one mutation at a time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="band-white">
+    <div class="wrap about">
+      <div>
+        <div class="head"><h2>[about]</h2></div>
+        <p class="lead">The grid holds. The city <em>ruptures</em> it. The structure shows how it stands.</p>
+        <p>wajiasimstudio approaches architecture as a cultural and tectonic act: reading the order and disorder of the city, and expressing structure, material and joinery as part of the design.</p>
+        <div class="bio">
+          <h3>[biography]</h3>
+          <p>Wajahat Asim is an architectural designer and the founder of wajiasimstudio, based in Rawalpindi, Pakistan. He completed the International Baccalaureate Diploma before studying architecture at IAC Lahore.</p>
+          <p>His thesis, a concert hall for the twin cities of Islamabad and Rawalpindi, grew out of fieldwork in the streets of Androon Pindi, where he walked, photographed and spoke with the people who live there. It set Islamabad's planned grid against fragments of the old city, and was later published on ArchiDiaries.</p>
+          <p>He went on to work as Assistant Architect at Nasir Design in Islamabad on residential and institutional projects. Through wajiasimstudio he designs, writes and builds prototypes around critical theory, deconstruction and tectonics.</p>
+        </div>
+      </div>
+      <div class="side">
+      <div class="cv">
+        <div><span>2026</span><span>Assistant Architect, Nasir Design (NDAS Pvt. Ltd.), Islamabad</span></div>
+        <div><span>2025</span><span>Bachelor of Architecture, IAC Lahore</span></div>
+        <div><span>Thesis</span><span><i>A Tale of the Twin Cities: The Silent Music of Space and Form</i>, published on ArchiDiaries</span></div>
+        <div><span>Diploma</span><span>International Baccalaureate Diploma Programme</span></div>
+        <div><span>Software</span><span>Revit · AutoCAD · SketchUp · Enscape · Twinmotion</span></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="band-red">
+    <div class="wrap">
+      <div class="head"><h2>[contact]</h2><span class="tag">Open to roles and collaborations</span></div>
+      <span class="email" id="email">wajiasimstudio@gmail.com</span>
+      <div class="row">
+        <button class="copy" id="copyBtn" type="button">Copy email</button>
+        <a href="https://www.instagram.com/wajiasimstudio" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@wajiasimstudio" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="band-black">
+  <div class="wrap"><span class="tag">© 2026 wajiasimstudio</span><span class="tag">Rawalpindi, Pakistan</span></div>
+</footer>
+
+<script>
+document.getElementById('copyBtn').addEventListener('click', function () {
+  var btn = this, el = document.getElementById('email');
+  function done(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy email'; }, 1600); }
+  function fallback(){
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = 'Selected, press copy';
+  }
+  try { navigator.clipboard.writeText(el.textContent).then(done, fallback); } catch (e) { fallback(); }
+});
+</script>
+
+</body>
+</html>
