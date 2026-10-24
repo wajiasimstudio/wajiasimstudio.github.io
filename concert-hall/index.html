@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Tale of the Twin Cities · wajiasimstudio</title>
+<meta name="description" content="A concert hall at Shakarparian, Islamabad, reading Islamabad and Rawalpindi through Nietzsche's Apollonian and Dionysian. B.Arch thesis by Wajahat Asim, wajiasimstudio.">
+<meta property="og:title" content="A Tale of the Twin Cities · wajiasimstudio">
+<meta property="og:description" content="Concert hall at Shakarparian, Islamabad. B.Arch thesis by Wajahat Asim.">
+<meta property="og:image" content="https://wajiasimstudio.github.io/concert-hall/img/thumb.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23ff0000'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='22' fill='white' text-anchor='middle'%3E[w]%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* layout: a project sheet — bracketed label column on the left, text and drawings on the right; one black band for the live model */
+:root{
+  --red:#ff0000; --white:#ffffff; --black:#0b0b0b; --grey:#5f5f5f; --rule:#d9d9d9; --paper:#f4f4f4;
+  --display:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--white)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--display);font-size:1.0625rem;line-height:1.6;overflow-x:clip}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* top bar */
+.top{background:var(--red);color:var(--white);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--red)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.bar a{font-weight:700;text-decoration:none}
+.bar nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}
+.bar nav a:hover,.bar .mark:hover{color:var(--black)}
+
+/* project header */
+.head{padding-block:56px 40px}
+.crumb{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.crumb a{text-decoration:none;font-weight:700}
+.crumb a:hover{color:var(--red)}
+.crumb .tag{color:var(--red)}
+h1{font-weight:700;font-size:clamp(2.6rem,7.5vw,6.2rem);line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.sub{font-size:clamp(1.2rem,2.6vw,1.9rem);font-weight:400;letter-spacing:-.01em;margin:14px 0 0;color:var(--grey)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:44px;border-top:4px solid var(--black)}
+.meta div{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);min-width:0}
+.meta dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.meta dd{margin:0;font-size:.98rem;line-height:1.4}
+.hero{margin:0;background:var(--black)}
+.hero img{display:block;width:100%;height:auto;max-height:86vh;object-fit:cover}
+.lead{padding-block:56px 8px}
+.lead p{font-size:clamp(1.25rem,2.3vw,1.7rem);line-height:1.38;letter-spacing:-.012em;font-weight:700;max-width:34ch;margin:0 0 .8em;text-wrap:pretty}
+.lead p + p{font-weight:400;font-size:1.15rem;line-height:1.6;max-width:62ch;letter-spacing:0}
+.lead em{font-style:normal;color:var(--red)}
+.toc{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;padding-top:18px;border-top:1px solid var(--rule)}
+.toc a{text-decoration:none;font-weight:700;font-size:.95rem}
+.toc a:hover{color:var(--red)}
+
+/* sections */
+.sec{padding-block:64px;border-top:1px solid var(--rule)}
+.grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:40px}
+.lab h2{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;letter-spacing:-.025em;margin:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.body{min-width:0;display:flex;flex-direction:column;gap:28px}
+.body > p{margin:0;max-width:66ch;font-size:1.08rem}
+.body h3{font-size:1.25rem;letter-spacing:-.01em;margin:24px 0 -8px}
+.row{display:grid;gap:20px;align-items:start}
+.row.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.row.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fig{margin:0;min-width:0}
+.fig .zoom{display:block;width:100%;padding:0;border:0;background:var(--paper);cursor:zoom-in}
+.fig img{display:block;width:100%;height:auto}
+.fig.tall img{max-height:1100px;object-fit:contain;background:var(--white)}
+.fig figcaption{display:flex;gap:10px;align-items:baseline;font-size:.88rem;line-height:1.4;color:var(--grey);margin-top:8px}
+.fig .n{font-family:var(--mono);font-size:.68rem;color:var(--red);flex:none}
+.fig .zoom:hover img{opacity:.92}
+
+/* model band */
+.sec.dark{background:var(--black);color:var(--white);border-top:0}
+.sec.dark .body > p{color:#cfcfcf}
+.viewer{position:relative;border:1px solid #2b2b2b;background:#f2f2f2;aspect-ratio:16/10;max-width:100%;overflow:hidden}
+#vcanvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#vcanvas:active{cursor:grabbing}
+.vbar{position:absolute;left:12px;top:12px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;right:12px}
+.vbtn{font-family:var(--display);font-weight:700;font-size:.9rem;border:2px solid var(--black);background:var(--white);color:var(--black);padding:7px 12px;cursor:pointer}
+.vbtn.on{background:var(--red);border-color:var(--red);color:var(--white)}
+.vbtn.reset{margin-left:auto}
+.vbtn:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.vstate{position:absolute;inset:auto 12px 12px auto;z-index:2;font-family:var(--mono);font-size:.72rem;color:var(--black);background:rgba(255,255,255,.85);padding:6px 10px}
+.vstate:empty{display:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(11,11,11,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(56px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;background:var(--white)}
+.lb p{color:var(--white);font-size:.95rem;margin:12px 0 0;text-align:center}
+.lb button{position:absolute;font-family:var(--display);font-weight:700;background:var(--white);color:var(--black);border:0;padding:9px 14px;cursor:pointer}
+.lb .x{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(12px,env(safe-area-inset-left,0px));top:50%}
+.lb .nx{right:max(12px,env(safe-area-inset-right,0px));top:50%}
+.lb button:hover{background:var(--red);color:var(--white)}
+
+.lb[hidden]{display:none}
+[hidden]{display:none!important}
+
+/* footer */
+.next{background:var(--red);color:var(--white);padding-block:56px}
+.next .wrap{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.next a{font-weight:700;font-size:clamp(1.6rem,4vw,3rem);letter-spacing:-.03em;text-decoration:none;line-height:1}
+.next a:hover{color:var(--black)}
+footer{background:var(--black);color:var(--white);padding-block:24px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid{grid-template-columns:1fr;gap:20px}
+  .lab h2{position:static}
+  .row.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .viewer{aspect-ratio:4/5}
+  .vbtn.reset{margin-left:0}
+}
+@media (max-width:560px){
+  .row.c2,.row.c3{grid-template-columns:1fr}
+  .head{padding-block:36px 28px}
+  .sec{padding-block:48px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="mark" href="../">[wajiasimstudio]</a>
+    <nav>
+      <a href="../#work">[work]</a>
+      <a href="../#research">[research]</a>
+      <a href="../#about">[about]</a>
+      <a href="../#contact">[contact]</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap head">
+    <div class="crumb"><a href="../#work">← [work]</a><span class="tag">Project 01 · B.Arch thesis</span></div>
+    <h1>A Tale of the Twin Cities</h1>
+    <p class="sub">The Silent Music of Space and Form</p>
+    <dl class="meta">
+      <div><dt>Programme</dt><dd>Concert hall and cultural complex</dd></div>
+      <div><dt>Site</dt><dd>Shakarparian, Islamabad</dd></div>
+      <div><dt>Context</dt><dd>B.Arch thesis, IAC Lahore, 2025</dd></div>
+      <div><dt>Published</dt><dd>ArchiDiaries</dd></div>
+      <div><dt>Materials</dt><dd>Brick, exposed concrete frame</dd></div>
+      <div><dt>Framework</dt><dd>Apollonian and Dionysian</dd></div>
+      <div><dt>Tools</dt><dd>Revit, AutoCAD, Twinmotion, Photoshop</dd></div>
+      <div><dt>Model</dt><dd>3D printed physical model</dd></div>
+    </dl>
+  </div>
+
+  <figure class="hero"><img src="img/hero.jpg" width="2400" height="1349" alt="Aerial view of the concert hall complex at dusk, pink brick roofs among the concrete frame" fetchpriority="high"></figure>
+
+  <div class="wrap lead">
+    <p>Islamabad is a capital drawn on a grid. Rawalpindi is an old city that grew lane by lane. This thesis places a concert hall between them and asks what an architecture of <em>both</em> cities would sound like.</p>
+    <p>The project reads the pair through Nietzsche's Apollonian and Dionysian: Islamabad as order and form, Androon Rawalpindi as the crowd and the music that breaks it open. It does not imitate either city. The design works inside out and part to whole, takes its forms from the terrain of Shakarparian, and is built in brick and concrete.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#site">[site]</a><a href="#cities">[two cities]</a><a href="#concept">[concept]</a><a href="#process">[process]</a><a href="#building">[the building]</a><a href="#model">[3d model]</a><a href="#drawings">[drawings]</a><a href="#renders">[renders]</a>
+    </nav>
+  </div>
+
+<section class="sec" id="site"><div class="wrap grid"><div class="lab"><h2>[site]</h2></div><div class="body"><p>Shakarparian is a wooded ridge on the edge of Islamabad, where the capital meets Rawalpindi. The Margalla Hills rise behind the city to the north, and the twin cities spread out below. The site is a seven-sided parcel on contoured ground, reached from the Islamabad Expressway, Srinagar Highway, Murree Road and Garden Avenue.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/site-terrain.jpg" data-cap="Islamabad, Rawalpindi and the Margalla Hills, with Shakarparian between them" aria-label="Enlarge: Islamabad, Rawalpindi and the Margalla Hills, with Shakarparian between them"><img src="img/site-terrain.jpg" width="2000" height="1418" loading="lazy" decoding="async" alt="Islamabad, Rawalpindi and the Margalla Hills, with Shakarparian between them"></button><figcaption><span class="n">01</span>Islamabad, Rawalpindi and the Margalla Hills, with Shakarparian between them</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/site-access.jpg" data-cap="Access routes around Shakarparian" aria-label="Enlarge: Access routes around Shakarparian"><img src="img/site-access.jpg" width="1418" height="2000" loading="lazy" decoding="async" alt="Access routes around Shakarparian"></button><figcaption><span class="n">02</span>Access routes around Shakarparian</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/site-location.jpg" data-cap="Site location and boundary" aria-label="Enlarge: Site location and boundary"><img src="img/site-location.jpg" width="1728" height="2000" loading="lazy" decoding="async" alt="Site location and boundary"></button><figcaption><span class="n">03</span>Site location and boundary</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/site-skyline.jpg" data-cap="The skyline of Islamabad against the hills" aria-label="Enlarge: The skyline of Islamabad against the hills"><img src="img/site-skyline.jpg" width="2000" height="1418" loading="lazy" decoding="async" alt="The skyline of Islamabad against the hills"></button><figcaption><span class="n">04</span>The skyline of Islamabad against the hills</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/site-photo.jpg" data-cap="Shakarparian, site photograph with the plan overlaid" aria-label="Enlarge: Shakarparian, site photograph with the plan overlaid"><img src="img/site-photo.jpg" width="1548" height="2000" loading="lazy" decoding="async" alt="Shakarparian, site photograph with the plan overlaid"></button><figcaption><span class="n">05</span>Shakarparian, site photograph with the plan overlaid</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/site-photo-2.jpg" data-cap="Shakarparian, the wooded slope of the site" aria-label="Enlarge: Shakarparian, the wooded slope of the site"><img src="img/site-photo-2.jpg" width="1557" height="2000" loading="lazy" decoding="async" alt="Shakarparian, the wooded slope of the site"></button><figcaption><span class="n">06</span>Shakarparian, the wooded slope of the site</figcaption></figure></div></div></div></section><section class="sec" id="cities"><div class="wrap grid"><div class="lab"><h2>[two cities]</h2></div><div class="body"><p>Mapped side by side, the two cities are opposites. Islamabad's sectors are wide, ordered and repetitive. Rawalpindi's old city is dense, irregular and continuous, grown lane by lane rather than drawn.</p><p>For fieldwork, Wajahat walked the streets of Androon Rawalpindi, talked with the people he met and photographed what he saw. Above the lanes, wires and poles were tangled across the street, chaotic but still standing. That image became the basis for the building's structure.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/fabric-islamabad.jpg" data-cap="Islamabad, figure ground" aria-label="Enlarge: Islamabad, figure ground"><img src="img/fabric-islamabad.jpg" width="2000" height="1995" loading="lazy" decoding="async" alt="Islamabad, figure ground"></button><figcaption><span class="n">07</span>Islamabad, figure ground</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/fabric-rawalpindi.jpg" data-cap="Rawalpindi, figure ground" aria-label="Enlarge: Rawalpindi, figure ground"><img src="img/fabric-rawalpindi.jpg" width="2000" height="1988" loading="lazy" decoding="async" alt="Rawalpindi, figure ground"></button><figcaption><span class="n">08</span>Rawalpindi, figure ground</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/fabric-aerial.jpg" data-cap="Where the two grids meet" aria-label="Enlarge: Where the two grids meet"><img src="img/fabric-aerial.jpg" width="1418" height="2000" loading="lazy" decoding="async" alt="Where the two grids meet"></button><figcaption><span class="n">09</span>Where the two grids meet</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/androon-wires.jpg" data-cap="Androon Rawalpindi, wires over the street" aria-label="Enlarge: Androon Rawalpindi, wires over the street"><img src="img/androon-wires.jpg" width="2000" height="1489" loading="lazy" decoding="async" alt="Androon Rawalpindi, wires over the street"></button><figcaption><span class="n">10</span>Androon Rawalpindi, wires over the street</figcaption></figure></div></div></div></section><section class="sec" id="concept"><div class="wrap grid"><div class="lab"><h2>[concept]</h2></div><div class="body"><p>The thesis reads the twin cities through Nietzsche's Apollonian and Dionysian. The Apollonian stands for order, measure and form; the Dionysian for the crowd, intoxication and music. Islamabad becomes the Apollonian ground. Androon Rawalpindi is the Dionysian force that ruptures it.</p><p>Two grids set the rules. The first is Islamabad's own grid, extended literally onto the site. It becomes a linear concrete frame of columns and beams that holds every passage and corridor. The second is drawn by connecting the corners of the seven-sided site boundary. It is a reference only, used to decide where the plan may bend away from the first grid.</p><p>Into this order the old city is thrust: heavy vaults, fragmented corrugated roofs taken from the dhabbas of Androon Pindi, and lanes modelled on Raja Bazaar. The method is a narrative plus a base set of rules, bent wherever the space or the programme asks for it.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/grid-frame.jpg" data-cap="The Apollonian: Islamabad&#x27;s grid as a frame" aria-label="Enlarge: The Apollonian: Islamabad&#x27;s grid as a frame"><img src="img/grid-frame.jpg" width="2000" height="1550" loading="lazy" decoding="async" alt="The Apollonian: Islamabad&#x27;s grid as a frame"></button><figcaption><span class="n">11</span>The Apollonian: Islamabad&#x27;s grid as a frame</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/pindi-cluster.jpg" data-cap="The Dionysian: the clustered blocks of Androon Pindi" aria-label="Enlarge: The Dionysian: the clustered blocks of Androon Pindi"><img src="img/pindi-cluster.jpg" width="2000" height="1441" loading="lazy" decoding="async" alt="The Dionysian: the clustered blocks of Androon Pindi"></button><figcaption><span class="n">12</span>The Dionysian: the clustered blocks of Androon Pindi</figcaption></figure></div><div class="row c3"><figure class="fig "><button class="zoom" type="button" data-src="img/grid-islamabad.jpg" data-cap="Grid 1: Islamabad&#x27;s grid extended onto the site" aria-label="Enlarge: Grid 1: Islamabad&#x27;s grid extended onto the site"><img src="img/grid-islamabad.jpg" width="1427" height="2000" loading="lazy" decoding="async" alt="Grid 1: Islamabad&#x27;s grid extended onto the site"></button><figcaption><span class="n">13</span>Grid 1: Islamabad&#x27;s grid extended onto the site</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/grid-site.jpg" data-cap="Grid 2: lines between the corners of the site boundary" aria-label="Enlarge: Grid 2: lines between the corners of the site boundary"><img src="img/grid-site.jpg" width="1400" height="2000" loading="lazy" decoding="async" alt="Grid 2: lines between the corners of the site boundary"></button><figcaption><span class="n">14</span>Grid 2: lines between the corners of the site boundary</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/grid-superimposed.jpg" data-cap="Both grids superimposed" aria-label="Enlarge: Both grids superimposed"><img src="img/grid-superimposed.jpg" width="1389" height="2000" loading="lazy" decoding="async" alt="Both grids superimposed"></button><figcaption><span class="n">15</span>Both grids superimposed</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/sketch-1.jpg" data-cap="Concept sketch: the Islamabad grid struck by the Dionysian" aria-label="Enlarge: Concept sketch: the Islamabad grid struck by the Dionysian"><img src="img/sketch-1.jpg" width="1812" height="2000" loading="lazy" decoding="async" alt="Concept sketch: the Islamabad grid struck by the Dionysian"></button><figcaption><span class="n">16</span>Concept sketch: the Islamabad grid struck by the Dionysian</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/sketch-2.jpg" data-cap="Concept sketch: rupture through the frame" aria-label="Enlarge: Concept sketch: rupture through the frame"><img src="img/sketch-2.jpg" width="1812" height="2000" loading="lazy" decoding="async" alt="Concept sketch: rupture through the frame"></button><figcaption><span class="n">17</span>Concept sketch: rupture through the frame</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/sketch-3.jpg" data-cap="Sketch axonometric" aria-label="Enlarge: Sketch axonometric"><img src="img/sketch-3.jpg" width="857" height="938" loading="lazy" decoding="async" alt="Sketch axonometric"></button><figcaption><span class="n">18</span>Sketch axonometric</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/sketch-4.jpg" data-cap="Sketch plan: Apollonian and Dionysian movement" aria-label="Enlarge: Sketch plan: Apollonian and Dionysian movement"><img src="img/sketch-4.jpg" width="883" height="1118" loading="lazy" decoding="async" alt="Sketch plan: Apollonian and Dionysian movement"></button><figcaption><span class="n">19</span>Sketch plan: Apollonian and Dionysian movement</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/grid-cross.jpg" data-cap="The rupture placed on the contours of Shakarparian" aria-label="Enlarge: The rupture placed on the contours of Shakarparian"><img src="img/grid-cross.jpg" width="2000" height="1916" loading="lazy" decoding="async" alt="The rupture placed on the contours of Shakarparian"></button><figcaption><span class="n">20</span>The rupture placed on the contours of Shakarparian</figcaption></figure></div></div></section><section class="sec" id="process"><div class="wrap grid"><div class="lab"><h2>[process]</h2></div><div class="body"><p>Early models tested the collision at full intensity: an orthogonal frame struck by red Dionysian planes. Interior studies then asked what it would feel like to stand inside the rupture, among beams and walls at conflicting angles.</p><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/model-concept-1.jpg" data-cap="Concept model: Apollonian x Dionysian" aria-label="Enlarge: Concept model: Apollonian x Dionysian"><img src="img/model-concept-1.jpg" width="2000" height="1133" loading="lazy" decoding="async" alt="Concept model: Apollonian x Dionysian"></button><figcaption><span class="n">21</span>Concept model: Apollonian x Dionysian</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/model-concept-2.jpg" data-cap="Concept model, worm&#x27;s-eye view" aria-label="Enlarge: Concept model, worm&#x27;s-eye view"><img src="img/model-concept-2.jpg" width="2000" height="1157" loading="lazy" decoding="async" alt="Concept model, worm&#x27;s-eye view"></button><figcaption><span class="n">22</span>Concept model, worm&#x27;s-eye view</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/study-1.jpg" data-cap="Spatial study 1" aria-label="Enlarge: Spatial study 1"><img src="img/study-1.jpg" width="2000" height="1758" loading="lazy" decoding="async" alt="Spatial study 1"></button><figcaption><span class="n">23</span>Spatial study 1</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/study-2.jpg" data-cap="Spatial study 2" aria-label="Enlarge: Spatial study 2"><img src="img/study-2.jpg" width="2000" height="1505" loading="lazy" decoding="async" alt="Spatial study 2"></button><figcaption><span class="n">24</span>Spatial study 2</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/study-3.jpg" data-cap="Spatial study 3" aria-label="Enlarge: Spatial study 3"><img src="img/study-3.jpg" width="2000" height="1613" loading="lazy" decoding="async" alt="Spatial study 3"></button><figcaption><span class="n">25</span>Spatial study 3</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/study-4.jpg" data-cap="Spatial study 4" aria-label="Enlarge: Spatial study 4"><img src="img/study-4.jpg" width="2000" height="1644" loading="lazy" decoding="async" alt="Spatial study 4"></button><figcaption><span class="n">26</span>Spatial study 4</figcaption></figure></div></div></div></section><section class="sec" id="building"><div class="wrap grid"><div class="lab"><h2>[the building]</h2></div><div class="body"><p>The complex brings together a main concert hall, rehearsal spaces, a museum, a souvenir bazaar, an artist residence, an amphitheatre and rooftop communal spaces. Visitors reach the hall along a corridor journey modelled on Raja Bazaar, through split levels and across bridges.</p><p>Every beam and column is exposed. Beams from one space run on into the next, so the structure cuts through rooms visually the way wires cross a street in Androon Pindi. From above, the pink concert hall roof reads like the planning blocks of the old city, while the white fragmented roofs behind it are drawn from the dhabba.</p><p>In the rehearsal spaces the floor is jagged, so musicians can sit or lie down to play. Corridors above act as viewing decks, where the public watch musicians practise on their way to a concert. A heavy vault ramps down through the artist residence to the backstage of the hall, cutting into the landscape. Along the descent, recreation spots sit in the contours on one side and open-air rehearsal spaces under corrugated roofs on I-beams on the other.</p><figure class="fig wide"><button class="zoom" type="button" data-src="img/axo-programme.jpg" data-cap="Programme axonometric" aria-label="Enlarge: Programme axonometric"><img src="img/axo-programme.jpg" width="2400" height="2368" loading="lazy" decoding="async" alt="Programme axonometric"></button><figcaption><span class="n">27</span>Programme axonometric</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/aerial-1.jpg" data-cap="Aerial view" aria-label="Enlarge: Aerial view"><img src="img/aerial-1.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Aerial view"></button><figcaption><span class="n">28</span>Aerial view</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/aerial-3.jpg" data-cap="Aerial view, the bridges and the rehearsal roofs" aria-label="Enlarge: Aerial view, the bridges and the rehearsal roofs"><img src="img/aerial-3.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Aerial view, the bridges and the rehearsal roofs"></button><figcaption><span class="n">29</span>Aerial view, the bridges and the rehearsal roofs</figcaption></figure></div></div></div></section><section class="sec dark" id="model"><div class="wrap grid"><div class="lab"><h2>[3d model]</h2></div><div class="body"><p>Two sections cut from the model prepared for the 3D print. Drag to orbit, scroll or pinch to zoom, right-drag to pan.</p><div class="viewer" id="viewer"><div class="vbar" role="group" aria-label="Choose model"><button type="button" class="vbtn on" data-model="model/concert-hall.glb" aria-pressed="true">[concert hall]</button><button type="button" class="vbtn" data-model="model/artist-residence.glb" aria-pressed="false">[artist residence]</button><button type="button" class="vbtn reset" id="vreset">[reset view]</button></div><canvas id="vcanvas" aria-label="Interactive 3D model of the concert hall"></canvas><div class="vstate" id="vstate">Loading model…</div></div></div></div></section><section class="sec" id="drawings"><div class="wrap grid"><div class="lab"><h2>[drawings]</h2></div><div class="body"><p>The plans and sections show the two grids at work: an orthogonal frame on the Islamabad grid, bent and broken where the old city enters and where the ground falls away.</p><figure class="fig wide tall"><button class="zoom" type="button" data-src="img/plan-ground.jpg" data-cap="Ground floor plan" aria-label="Enlarge: Ground floor plan"><img src="img/plan-ground.jpg" width="1554" height="2400" loading="lazy" decoding="async" alt="Ground floor plan"></button><figcaption><span class="n">30</span>Ground floor plan</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/section-aa.jpg" data-cap="Section AA&#x27;" aria-label="Enlarge: Section AA&#x27;"><img src="img/section-aa.jpg" width="3000" height="616" loading="lazy" decoding="async" alt="Section AA&#x27;"></button><figcaption><span class="n">31</span>Section AA&#x27;</figcaption></figure><figure class="fig wide"><button class="zoom" type="button" data-src="img/axo-structure.jpg" data-cap="Structural axonometric" aria-label="Enlarge: Structural axonometric"><img src="img/axo-structure.jpg" width="2400" height="1863" loading="lazy" decoding="async" alt="Structural axonometric"></button><figcaption><span class="n">32</span>Structural axonometric</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/axo-section-1.jpg" data-cap="Sectional axonometric: concert hall" aria-label="Enlarge: Sectional axonometric: concert hall"><img src="img/axo-section-1.jpg" width="2000" height="1619" loading="lazy" decoding="async" alt="Sectional axonometric: concert hall"></button><figcaption><span class="n">33</span>Sectional axonometric: concert hall</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/axo-section-3.jpg" data-cap="Sectional axonometric: concert hall and stage" aria-label="Enlarge: Sectional axonometric: concert hall and stage"><img src="img/axo-section-3.jpg" width="2000" height="1598" loading="lazy" decoding="async" alt="Sectional axonometric: concert hall and stage"></button><figcaption><span class="n">34</span>Sectional axonometric: concert hall and stage</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/axo-section-2.jpg" data-cap="Sectional axonometric: the long section" aria-label="Enlarge: Sectional axonometric: the long section"><img src="img/axo-section-2.jpg" width="2000" height="1099" loading="lazy" decoding="async" alt="Sectional axonometric: the long section"></button><figcaption><span class="n">35</span>Sectional axonometric: the long section</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/section-rehearsal.jpg" data-cap="Section through the rehearsal space" aria-label="Enlarge: Section through the rehearsal space"><img src="img/section-rehearsal.jpg" width="994" height="2000" loading="lazy" decoding="async" alt="Section through the rehearsal space"></button><figcaption><span class="n">36</span>Section through the rehearsal space</figcaption></figure></div></div></div></section><section class="sec" id="renders"><div class="wrap grid"><div class="lab"><h2>[renders]</h2></div><div class="body"><p>Rendered in Twinmotion. Brick and exposed concrete throughout, with the frame visible overhead.</p><h3>[outside]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/ext-artist-entrance.jpg" data-cap="Artist entrance" aria-label="Enlarge: Artist entrance"><img src="img/ext-artist-entrance.jpg" width="2000" height="1124" loading="lazy" decoding="async" alt="Artist entrance"></button><figcaption><span class="n">37</span>Artist entrance</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/ext-bazaar-residence.jpg" data-cap="Souvenir bazaar and artist residence" aria-label="Enlarge: Souvenir bazaar and artist residence"><img src="img/ext-bazaar-residence.jpg" width="2000" height="1124" loading="lazy" decoding="async" alt="Souvenir bazaar and artist residence"></button><figcaption><span class="n">38</span>Souvenir bazaar and artist residence</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/ext-bridge.jpg" data-cap="Transitional bridge" aria-label="Enlarge: Transitional bridge"><img src="img/ext-bridge.jpg" width="2000" height="1122" loading="lazy" decoding="async" alt="Transitional bridge"></button><figcaption><span class="n">39</span>Transitional bridge</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/ext-concert-exit.jpg" data-cap="Concert hall, south-east exit" aria-label="Enlarge: Concert hall, south-east exit"><img src="img/ext-concert-exit.jpg" width="2000" height="1123" loading="lazy" decoding="async" alt="Concert hall, south-east exit"></button><figcaption><span class="n">40</span>Concert hall, south-east exit</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/ext-amphitheatre.jpg" data-cap="Open amphitheatre" aria-label="Enlarge: Open amphitheatre"><img src="img/ext-amphitheatre.jpg" width="2000" height="1122" loading="lazy" decoding="async" alt="Open amphitheatre"></button><figcaption><span class="n">41</span>Open amphitheatre</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/ext-outdoor-rehearsal.jpg" data-cap="Outdoor rehearsal and recreation" aria-label="Enlarge: Outdoor rehearsal and recreation"><img src="img/ext-outdoor-rehearsal.jpg" width="2000" height="1117" loading="lazy" decoding="async" alt="Outdoor rehearsal and recreation"></button><figcaption><span class="n">42</span>Outdoor rehearsal and recreation</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/ext-rooftop.jpg" data-cap="Rooftop communal space" aria-label="Enlarge: Rooftop communal space"><img src="img/ext-rooftop.jpg" width="2000" height="1126" loading="lazy" decoding="async" alt="Rooftop communal space"></button><figcaption><span class="n">43</span>Rooftop communal space</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/aerial-2.jpg" data-cap="Aerial view, the residence courtyards" aria-label="Enlarge: Aerial view, the residence courtyards"><img src="img/aerial-2.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Aerial view, the residence courtyards"></button><figcaption><span class="n">44</span>Aerial view, the residence courtyards</figcaption></figure></div><h3>[inside]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/int-foyer.jpg" data-cap="Foyer" aria-label="Enlarge: Foyer"><img src="img/int-foyer.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Foyer"></button><figcaption><span class="n">45</span>Foyer</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/int-transitional.jpg" data-cap="Transitional space" aria-label="Enlarge: Transitional space"><img src="img/int-transitional.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Transitional space"></button><figcaption><span class="n">46</span>Transitional space</figcaption></figure></div><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/int-museum.jpg" data-cap="Museum, split level" aria-label="Enlarge: Museum, split level"><img src="img/int-museum.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Museum, split level"></button><figcaption><span class="n">47</span>Museum, split level</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/int-bazaar.jpg" data-cap="Souvenir bazaar" aria-label="Enlarge: Souvenir bazaar"><img src="img/int-bazaar.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Souvenir bazaar"></button><figcaption><span class="n">48</span>Souvenir bazaar</figcaption></figure></div><figure class="fig wide"><button class="zoom" type="button" data-src="img/int-rehearsal.jpg" data-cap="Rehearsal space: jagged floors below, viewing corridors above" aria-label="Enlarge: Rehearsal space: jagged floors below, viewing corridors above"><img src="img/int-rehearsal.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Rehearsal space: jagged floors below, viewing corridors above"></button><figcaption><span class="n">49</span>Rehearsal space: jagged floors below, viewing corridors above</figcaption></figure><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/int-concert-hall.jpg" data-cap="Concert hall" aria-label="Enlarge: Concert hall"><img src="img/int-concert-hall.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Concert hall"></button><figcaption><span class="n">50</span>Concert hall</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/int-concert-stages.jpg" data-cap="Concert hall, split-level stages" aria-label="Enlarge: Concert hall, split-level stages"><img src="img/int-concert-stages.jpg" width="2000" height="1125" loading="lazy" decoding="async" alt="Concert hall, split-level stages"></button><figcaption><span class="n">51</span>Concert hall, split-level stages</figcaption></figure></div><h3>[site model]</h3><div class="row c2"><figure class="fig "><button class="zoom" type="button" data-src="img/model-site.jpg" data-cap="Site model" aria-label="Enlarge: Site model"><img src="img/model-site.jpg" width="2000" height="1082" loading="lazy" decoding="async" alt="Site model"></button><figcaption><span class="n">52</span>Site model</figcaption></figure><figure class="fig "><button class="zoom" type="button" data-src="img/model-context.jpg" data-cap="Site model with Islamabad behind" aria-label="Enlarge: Site model with Islamabad behind"><img src="img/model-context.jpg" width="2000" height="1083" loading="lazy" decoding="async" alt="Site model with Islamabad behind"></button><figcaption><span class="n">53</span>Site model with Islamabad behind</figcaption></figure></div></div></div></section>
+</main>
+
+<section class="next">
+  <div class="wrap">
+    <span class="tag">More work</span>
+    <a href="../#work">[back to work] →</a>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span class="tag">© 2026 wajiasimstudio</span><span class="tag">Rawalpindi, Pakistan</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+  <button class="x" type="button" id="lbx">Close</button>
+  <button class="pv" type="button" id="lbp" aria-label="Previous image">←</button>
+  <button class="nx" type="button" id="lbn" aria-label="Next image">→</button>
+</div>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.zoom')), lb=document.getElementById('lb'), img=document.getElementById('lbimg'), cap=document.getElementById('lbcap'), i=0, last=null;
+  function show(k){i=(k+items.length)%items.length;var b=items[i];img.src=b.dataset.src;img.alt=b.dataset.cap;cap.textContent=b.dataset.cap;}
+  function open(k){last=document.activeElement;show(k);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus();}
+  function close(){lb.hidden=true;document.body.style.overflow='';if(last)last.focus();}
+  items.forEach(function(b,k){b.addEventListener('click',function(){open(k);});});
+  document.getElementById('lbx').onclick=close;
+  document.getElementById('lbp').onclick=function(){show(i-1);};
+  document.getElementById('lbn').onclick=function(){show(i+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
+
+<script type="importmap">{"imports":{"three":"../assets/three/build/three.module.min.js","three/addons/":"../assets/three/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+
+const box=document.getElementById('viewer'), canvas=document.getElementById('vcanvas'), state=document.getElementById('vstate');
+let renderer, scene, camera, controls, current=null, home=null, started=false;
+const cache={};
+const loader=new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('../assets/three/jsm/libs/draco/'));
+const surface=new THREE.MeshStandardMaterial({color:0xefefef,roughness:.92,metalness:0,side:THREE.DoubleSide,flatShading:true,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1});
+const lines=new THREE.LineBasicMaterial({color:0x1a1a1a});
+
+function size(){const w=box.clientWidth,h=box.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+function frame(obj){
+  const b=new THREE.Box3().setFromObject(obj),c=b.getCenter(new THREE.Vector3()),r=b.getSize(new THREE.Vector3()).length();
+  controls.target.copy(c);camera.near=r/200;camera.far=r*20;camera.updateProjectionMatrix();
+  camera.position.set(c.x+r*.72,c.y+r*.62,c.z+r*.72);controls.update();
+  home={p:camera.position.clone(),t:c.clone()};
+}
+function build(gltf){
+  const g=gltf.scene;g.rotation.x=-Math.PI/2;
+  g.traverse(m=>{if(m.isMesh){m.material=surface;m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry,28),lines));}});
+  return g;
+}
+function load(url){
+  state.textContent='Loading model…';
+  const done=obj=>{if(current)scene.remove(current);current=obj;scene.add(obj);obj.updateMatrixWorld(true);frame(obj);state.textContent='';};
+  if(cache[url]){done(cache[url]);return;}
+  loader.load(url,g=>{state.textContent='Preparing edges…';requestAnimationFrame(()=>{cache[url]=build(g);done(cache[url]);});},
+    e=>{if(e.total)state.textContent='Loading model… '+Math.round(e.loaded/e.total*100)+'%';},
+    ()=>{state.textContent='The model could not load. Try refreshing the page.';});
+}
+function start(){
+  if(started)return;started=true;
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true});}catch(e){state.textContent='3D needs WebGL, which this browser has turned off.';return;}
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  scene=new THREE.Scene();scene.background=new THREE.Color(0xf2f2f2);
+  camera=new THREE.PerspectiveCamera(32,1,.1,1000);
+  scene.add(new THREE.HemisphereLight(0xffffff,0x8a8a8a,2.3));
+  const sun=new THREE.DirectionalLight(0xffffff,1.5);sun.position.set(2,3,1.4);scene.add(sun);
+  controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.08;controls.maxPolarAngle=Math.PI*.495;
+  size();new ResizeObserver(size).observe(box);
+  renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
+  load('model/concert-hall.glb');
+}
+document.querySelectorAll('.vbtn[data-model]').forEach(b=>b.addEventListener('click',()=>{
+  start();document.querySelectorAll('.vbtn[data-model]').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b);});load(b.dataset.model);
+}));
+document.getElementById('vreset').addEventListener('click',()=>{if(!home)return;camera.position.copy(home.p);controls.target.copy(home.t);controls.update();});
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){start();io.disconnect();}},{rootMargin:'400px'});io.observe(box);}else start();
+</script>
+</body>
+</html>

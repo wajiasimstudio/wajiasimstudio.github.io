@@ -121,6 +121,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .intro{max-width:60ch;margin:0 0 32px;font-size:1.1rem}
 .band-black .intro{color:#cfcfcf}
 .cv span:first-child{text-transform:uppercase;letter-spacing:.06em;font-size:.72rem}
+.slot.proj{text-decoration:none;color:var(--white);border-color:var(--black);background:var(--black)}
+.slot.proj img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78;transition:opacity .2s}
+.slot.proj .n,.slot.proj .t{position:relative}
+.slot.proj .t small{display:block;font-weight:400;font-size:.85rem;margin-top:4px}
+.slot.proj:hover{background:var(--red);border-color:var(--red)}
+.slot.proj:hover img{opacity:.35}
 </style>
 <style>body{margin:0}</style>
 </head>
@@ -166,9 +172,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <section id="work" class="band-white">
     <div class="wrap">
       <div class="head"><h2>[work]</h2><span class="tag">2023–2026</span></div>
-      <p class="intro">Selected projects in cultural, residential, healthcare and interior architecture. Full project documentation will be published here shortly.</p>
+      <p class="intro">Selected projects in cultural, residential, healthcare and interior architecture. More projects will be added here soon.</p>
       <div class="slots">
-        <div class="slot"><span class="n">[01]</span><span class="t">Project forthcoming</span></div>
+        <a class="slot proj" href="concert-hall/"><img src="concert-hall/img/thumb.jpg" alt="" loading="lazy"><span class="n">[01]</span><span class="t">A Tale of the Twin Cities<small>Concert hall, Shakarparian, Islamabad · B.Arch thesis</small></span></a>
         <div class="slot"><span class="n">[02]</span><span class="t">Project forthcoming</span></div>
         <div class="slot"><span class="n">[03]</span><span class="t">Project forthcoming</span></div>
       </div>
