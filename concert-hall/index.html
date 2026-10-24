@@ -233,7 +233,7 @@ function load(url){
   state.textContent='Loading model…';
   const done=obj=>{if(current)scene.remove(current);current=obj;scene.add(obj);obj.updateMatrixWorld(true);frame(obj);state.textContent='';};
   if(cache[url]){done(cache[url]);return;}
-  loader.load(url,g=>{state.textContent='Preparing edges…';requestAnimationFrame(()=>{cache[url]=build(g);done(cache[url]);});},
+  loader.load(url,g=>{state.textContent='Preparing edges…';setTimeout(()=>{cache[url]=build(g);done(cache[url]);},30);},
     e=>{if(e.total)state.textContent='Loading model… '+Math.round(e.loaded/e.total*100)+'%';},
     ()=>{state.textContent='The model could not load. Try refreshing the page.';});
 }
