@@ -58,3 +58,22 @@
     }).observe(im,{attributes:true,attributeFilter:['src']});
   }
 })();
+
+// new-visitor notification (once per browser), sent to the owner's ntfy topic
+(function(){
+  try{
+    var ls=window.localStorage, q=location.search;
+    if(/[?&]me\b/.test(q)){ ls.setItem('wss_me','1'); return; }
+    if(ls.getItem('wss_me')||ls.getItem('wss_seen')) return;
+    if(navigator.webdriver||/bot|crawl|spider|preview|headless/i.test(navigator.userAgent)) return;
+    if(location.hostname!=='wajiasimstudio.github.io') return;
+    ls.setItem('wss_seen',String(Date.now()));
+    var ref=document.referrer?new URL(document.referrer).hostname:'';
+    if(ref===location.hostname) ref='';
+    var ua=navigator.userAgent, dev=/Mobi|Android|iPhone/i.test(ua)?'phone':(/iPad|Tablet/i.test(ua)?'tablet':'computer');
+    var tz=''; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+    var page=(document.querySelector('h1')&&document.title.split(' · ')[0])||'Home';
+    var body='Opened: '+(location.pathname==='/'?'Home':page)+'\nFrom: '+(ref||'direct link')+'\nDevice: '+dev+(tz?'\nTime zone: '+tz:'');
+    fetch('https://ntfy.sh/wajiasimstudio-huz6jk2lmo72',{method:'POST',body:body,keepalive:true,headers:{'Title':'New visitor on wajiasimstudio','Tags':'eyes','Click':location.href}}).catch(function(){});
+  }catch(e){}
+})();
