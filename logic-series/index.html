@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[logic.series] · wajiasimstudio</title>
+<meta name="description" content="[logic.series]: short essays by Wajahat Asim of wajiasimstudio on form, syntax, complexity, originality and tectonics in architecture.">
+<meta property="og:title" content="[logic.series] · wajiasimstudio">
+<meta property="og:description" content="Notes on form, syntax, complexity, originality and tectonics.">
+<meta property="og:image" content="https://wajiasimstudio.github.io/logic-series/img/form-00.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23ff0000'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='22' fill='white' text-anchor='middle'%3E[w]%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* layout: a project sheet — bracketed label column on the left, text and drawings on the right; one black band for the live model */
+:root{
+  --red:#ff0000; --white:#ffffff; --black:#0b0b0b; --grey:#5f5f5f; --rule:#d9d9d9; --paper:#f4f4f4;
+  --display:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--white)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--display);font-size:1.0625rem;line-height:1.6;overflow-x:clip}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* top bar */
+.top{background:var(--red);color:var(--white);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--red)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.bar a{font-weight:700;text-decoration:none}
+.bar nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}
+.bar nav a:hover,.bar .mark:hover{color:var(--black)}
+
+/* project header */
+.head{padding-block:56px 40px}
+.crumb{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.crumb a{text-decoration:none;font-weight:700}
+.crumb a:hover{color:var(--red)}
+.crumb .tag{color:var(--red)}
+h1{font-weight:700;font-size:clamp(2.6rem,7.5vw,6.2rem);line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.sub{font-size:clamp(1.2rem,2.6vw,1.9rem);font-weight:400;letter-spacing:-.01em;margin:14px 0 0;color:var(--grey)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:44px;border-top:4px solid var(--black)}
+.meta div{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);min-width:0}
+.meta dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.meta dd{margin:0;font-size:.98rem;line-height:1.4}
+.hero{margin:0;background:var(--black)}
+.hero img{display:block;width:100%;height:auto;max-height:86vh;object-fit:cover}
+.lead{padding-block:56px 8px}
+.lead p{font-size:clamp(1.25rem,2.3vw,1.7rem);line-height:1.38;letter-spacing:-.012em;font-weight:700;max-width:34ch;margin:0 0 .8em;text-wrap:pretty}
+.lead p + p{font-weight:400;font-size:1.15rem;line-height:1.6;max-width:62ch;letter-spacing:0}
+.lead em{font-style:normal;color:var(--red)}
+.toc{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;padding-top:18px;border-top:1px solid var(--rule)}
+.toc a{text-decoration:none;font-weight:700;font-size:.95rem}
+.toc a:hover{color:var(--red)}
+
+/* sections */
+.sec{padding-block:64px;border-top:1px solid var(--rule)}
+.grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:40px}
+.lab h2{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;letter-spacing:-.025em;margin:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.body{min-width:0;display:flex;flex-direction:column;gap:28px}
+.body > p{margin:0;max-width:66ch;font-size:1.08rem}
+.body h3{font-size:1.25rem;letter-spacing:-.01em;margin:24px 0 -8px}
+.row{display:grid;gap:20px;align-items:start}
+.row.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.row.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fig{margin:0;min-width:0}
+.fig .zoom{display:block;width:100%;padding:0;border:0;background:var(--paper);cursor:zoom-in}
+.fig img{display:block;width:100%;height:auto}
+.fig.tall img{max-height:1100px;object-fit:contain;background:var(--white)}
+.fig figcaption{display:flex;gap:10px;align-items:baseline;font-size:.88rem;line-height:1.4;color:var(--grey);margin-top:8px}
+.fig .n{font-family:var(--mono);font-size:.68rem;color:var(--red);flex:none}
+.fig .zoom:hover img{opacity:.92}
+
+/* model band */
+.sec.dark{background:var(--black);color:var(--white);border-top:0}
+.sec.dark .body > p{color:#cfcfcf}
+.viewer{position:relative;border:1px solid #2b2b2b;background:#f2f2f2;aspect-ratio:16/10;max-width:100%;overflow:hidden}
+#vcanvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#vcanvas:active{cursor:grabbing}
+.vbar{position:absolute;left:12px;top:12px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;right:12px}
+.vbtn{font-family:var(--display);font-weight:700;font-size:.9rem;border:2px solid var(--black);background:var(--white);color:var(--black);padding:7px 12px;cursor:pointer}
+.vbtn.on{background:var(--red);border-color:var(--red);color:var(--white)}
+.vbtn.reset{margin-left:auto}
+.vbtn:hover{background:var(--black);border-color:var(--black);color:var(--white)}
+.vstate{position:absolute;inset:auto 12px 12px auto;z-index:2;font-family:var(--mono);font-size:.72rem;color:var(--black);background:rgba(255,255,255,.85);padding:6px 10px}
+.vstate:empty{display:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(11,11,11,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(56px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;background:var(--white)}
+.lb p{color:var(--white);font-size:.95rem;margin:12px 0 0;text-align:center}
+.lb button{position:absolute;font-family:var(--display);font-weight:700;background:var(--white);color:var(--black);border:0;padding:9px 14px;cursor:pointer}
+.lb .x{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(12px,env(safe-area-inset-left,0px));top:50%}
+.lb .nx{right:max(12px,env(safe-area-inset-right,0px));top:50%}
+.lb button:hover{background:var(--red);color:var(--white)}
+
+.lb[hidden]{display:none}
+[hidden]{display:none!important}
+
+/* footer */
+.next{background:var(--red);color:var(--white);padding-block:56px}
+.next .wrap{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.next a{font-weight:700;font-size:clamp(1.6rem,4vw,3rem);letter-spacing:-.03em;text-decoration:none;line-height:1}
+.next a:hover{color:var(--black)}
+footer{background:var(--black);color:var(--white);padding-block:24px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid{grid-template-columns:1fr;gap:20px}
+  .lab h2{position:static}
+  .row.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .viewer{aspect-ratio:4/5}
+  .vbtn.reset{margin-left:0}
+}
+@media (max-width:560px){
+  .row.c2,.row.c3{grid-template-columns:1fr}
+  .head{padding-block:36px 28px}
+  .sec{padding-block:48px}
+}
+
+.lshero{background:var(--red);color:var(--white);padding-block:56px 64px}
+.lshero .crumb a,.lshero .crumb .tag{color:var(--white)}
+.lshero .crumb a:hover{color:var(--black)}
+.lshero h1{font-size:clamp(3rem,10vw,8.5rem)}
+.lshero .sub{color:var(--white);opacity:.9}
+.lab .num{display:block;color:var(--red);font-size:1rem;font-family:var(--mono);margin-top:10px;letter-spacing:0}
+.lab .blurb{font-size:.95rem;color:var(--grey);margin:16px 0 0;max-width:30ch}
+.note-e{border-top:1px solid var(--rule);padding-top:20px}
+.note-e:first-child{border-top:0;padding-top:0}
+.note-e h3{margin:0 0 12px;font-size:1.3rem;display:flex;gap:12px;align-items:baseline}
+.note-e .k{font-family:var(--mono);font-size:.72rem;color:var(--red);font-weight:400}
+.note-e .txt p{margin:0 0 .9em;max-width:64ch;font-size:1.1rem;line-height:1.7}
+.note-e .txt p:first-letter{text-transform:none}
+.posts-h{color:var(--red);margin-top:12px}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:-14px}
+.post{display:block;padding:0;border:0;background:var(--red);cursor:zoom-in;aspect-ratio:1/1;overflow:hidden}
+.post img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.post:hover img{transform:scale(1.05)}
+.lb img{max-height:calc(100% - 40px)}
+@media (max-width:560px){.lshero{padding-block:36px 44px}.posts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+<link rel="stylesheet" href="../assets/polish.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="mark" href="../">[wajiasimstudio]</a>
+    <nav>
+      <a href="../#work">[work]</a>
+      <a href="../#research">[research]</a>
+      <a href="../#about">[about]</a>
+      <a href="../#contact">[contact]</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="lshero"><div class="wrap">
+    <div class="crumb"><a href="../#research">← [research]</a><span class="tag">Essay series · 2026</span></div>
+    <h1>[logic.series]</h1>
+    <p class="sub">Notes on form, syntax, complexity, originality and tectonics.</p>
+  </div></div>
+  <div class="wrap lead">
+    <p>A running set of notes on how architecture should be <em>reasoned</em>, not styled. Each one starts from a simple question and follows it until it stops being simple.</p>
+    <p>The series is published as posts on Instagram under wajiasimstudio. Here each set is collected as one text, with the original posts below it.</p>
+    <nav class="toc" aria-label="Sets"><a href="#form">[form]</a><a href="#syntax">[syntax]</a><a href="#complexity">[complexity]</a><a href="#originality">[originality]</a><a href="#tectonics">[tectonics]</a></nav>
+  </div>
+<section class="sec" id="form"><div class="wrap grid"><div class="lab"><h2>[notes on form]<span class="num">[01]</span></h2><p class="blurb">On where form comes from: not from function alone, and not from a vision brought into the studio, but as the consequence of the site, the syntax and the narrative colliding.</p></div><div class="body"><article class="note-e" id="form-form-follows-function-bs"><h3><span class="k">01.1</span>[form follows function bs]</h3><div class="txt"><p>form follows function is perhaps the most overused three-word cliche in architecture. to suggest that form should be driven solely by function is not an objective truth, it is a confession of creative suicide. function is a baseline requirement, not a design generator. to treat a floor plan as a justification for a volume is to reduce architecture to mere plumbing. we do not design for &quot;use&quot;, we design for the statement of architecture. and this critique is true for the opposite, purely formal logic of “function follows form” as well. that is when arbitrary and superficial forms arise.</p></div></article><article class="note-e" id="form-the-eisenman-logic"><h3><span class="k">01.2</span>[the eisenman logic]</h3><div class="txt"><p>we adopt the eisenmanian syntax as a baseline. we do not ignore the city mappings, the topography, earthquake cracks, the rock patterns, or even a single brick on site. we extract and create logic out of these existing references. this logic could be in the form of regulation lines, coordinate geometry, internal sitelines, superimposed grids, etc. but eisenman did not stop there. there was manipulation where another grid is introduced. this is not a design choice, it is a design response to the site.</p></div></article><article class="note-e" id="form-the-eisenman-logic-well-only-to-an-extent"><h3><span class="k">01.3</span>[the eisenman logic… well only to an extent]</h3><div class="txt"><p>the house series is the epitome of the eisenman logic becoming useless architecture. brilliant but useless. it just proves a theoretical point, nothing else. why would you want a staircase going nowhere? where is the fucking humanity in that? so we forget the syntax for a moment, but never leave it. if the syntax process is pure enough, it will leave a formal trace. the design must be traced back to the initial syntax step. but now you&#x27;re left with an odd looking mesh of a form, which makes no sense to a normal person. well, that is where the true architecture begins. at this point you must be thinking what the fuck am i going on about.</p></div></article><article class="note-e" id="form-the-consequence"><h3><span class="k">01.4</span>[the consequence]</h3><div class="txt"><p>what should derive the form then? well, the question itself is shallow. why should the form be deliberately “driven” out of anything. why can&#x27;t it be a consequence of something. why can&#x27;t the form be inevitable? let me frame it this way. the form should not be a static object, but rather a consequence or a result of exploring the syntax, the narrative, the site, the context, or even the function. when you think in terms of the latter systems holistically, you don’t think about achieving a certain “kind” of form. when the program, the topography, or even the historical mappings collide, the resulting form is the only one that could have existed. it is an inevitable extraction, not a choice. if the form feels “chosen,” it is arbitrary. if the form feels “consequential,” it is architecture.</p></div></article><article class="note-e" id="form-the-mask"><h3><span class="k">01.5</span>[the mask]</h3><div class="txt"><p>the form is never preconceived. to walk into a studio with a vision is a confession of intellectual failure. once a form is decided before the site is interrogated, it ceases to be architecture, it becomes a mere aesthetic choice. the form must remain consequential until the very last minute of the intervention. the moment it is preconceived at any given point during the design, the art of the accident dies. without the accident, there is no discovery, only arbitrary repetition of mediocre patterns. this is not a pseudo intellectual statement, but a realization that architecture is sensitive to this bullshit.</p></div></article><div class="posts-h tag">The original posts</div><div class="posts"><button class="zoom post" type="button" data-src="img/form-00.jpg" data-cap="[notes on form] [01], cover"><img src="img/form-00-t.jpg" width="480" height="480" loading="lazy" alt="[notes on form] cover slide"></button><button class="zoom post" type="button" data-src="img/form-01.jpg" data-cap="[notes on form] form follows function bs"><img src="img/form-01-t.jpg" width="480" height="480" loading="lazy" alt="Post: form follows function bs"></button><button class="zoom post" type="button" data-src="img/form-02.jpg" data-cap="[notes on form] the eisenman logic"><img src="img/form-02-t.jpg" width="480" height="480" loading="lazy" alt="Post: the eisenman logic"></button><button class="zoom post" type="button" data-src="img/form-03.jpg" data-cap="[notes on form] the eisenman logic… well only to an extent"><img src="img/form-03-t.jpg" width="480" height="480" loading="lazy" alt="Post: the eisenman logic… well only to an extent"></button><button class="zoom post" type="button" data-src="img/form-04.jpg" data-cap="[notes on form] the consequence"><img src="img/form-04-t.jpg" width="480" height="480" loading="lazy" alt="Post: the consequence"></button><button class="zoom post" type="button" data-src="img/form-05.jpg" data-cap="[notes on form] the mask"><img src="img/form-05-t.jpg" width="480" height="480" loading="lazy" alt="Post: the mask"></button></div></div></div></section><section class="sec" id="syntax"><div class="wrap grid"><div class="lab"><h2>[notes on syntax]<span class="num">[02]</span></h2><p class="blurb">On syntax as a working method: extracting a grammar from the site, operating on it, defending it in the abstract, and then knowing when to break it for the people who will use the building.</p></div><div class="body"><article class="note-e" id="syntax-the-premise-of-syntax"><h3><span class="k">02.1</span>[the premise of syntax]</h3><div class="txt"><p>syntax is not some rocket science formula; it&#x27;s a structured way of extracting architecture from existing conditions. this is visual and/or computable site/contextual data which may include earth patterns, site lines, movement, etc. this data forms our primary grammar that would then derive the architecture. without the premise, you are only drawing arbitrary lines and curves because you “felt” like it or because you believe zaha’s soul lives inside of you.</p></div></article><article class="note-e" id="syntax-geometric-manipulation"><h3><span class="k">02.2</span>[geometric manipulation]</h3><div class="txt"><p>we do not design volumes, we perform operations: rotation, shearing, collision, extrusion, etc. these aren&#x27;t stylistic choices, they are reactions to the site&#x27;s hidden coordinates, grids, etc. the manipulation is the process of forcing the syntax to respond to the physical nature of the ground. you miss this step, and your building would not react to the site. the building would simply sit on top of the ground, alienated and unresponsive. superficial. sad.</p></div></article><article class="note-e" id="syntax-abstract-reasoning"><h3><span class="k">02.3</span>[abstract reasoning]</h3><div class="txt"><p>the “odd-looking mesh” mentioned in the previous dossier is the result of pure reasoning. it is the architectural essence that exists before the program is injected. we reason through density, tension, void, or even spaces. if you cannot defend the form in its abstract state, it has no business being built. but some people stop here and call it architecture. that’s just lazy and pathetic. the hardest part comes after, when you inject the program, the function, the narrative, or whatever it is that makes it livable and buildable. but if the final architecture has no relation to this abstraction in any way, then that means the syntax has failed, and the architecture has no premise. and if it&#x27;s still claiming to come out of the syntax, then that means the syntax is poorly reverse engineered.</p></div></article><article class="note-e" id="syntax-knowing-when-to-deviate"><h3><span class="k">02.4</span>[knowing when to deviate]</h3><div class="txt"><p>rigor is the baseline, but the “accident” is what is pure and raw. once the syntax is pure, we introduce the narrative rupture. this is where intuition intervenes to accommodate the human. this is where we slightly deviate from the inhumane ideology of eisenman. the narrative brings in the behavior, the movement, the fucking humanity to the site. we follow the code until it becomes pure, then we perform an intuitive surgery based on a narrative to break it. it results in a collision between the architect’s humane response and the syntax they created earlier. it results in architecture that is both logical and humane.</p></div></article><div class="posts-h tag">The original posts</div><div class="posts"><button class="zoom post" type="button" data-src="img/syntax-00.jpg" data-cap="[notes on syntax] [02], cover"><img src="img/syntax-00-t.jpg" width="480" height="480" loading="lazy" alt="[notes on syntax] cover slide"></button><button class="zoom post" type="button" data-src="img/syntax-01.jpg" data-cap="[notes on syntax] the premise of syntax"><img src="img/syntax-01-t.jpg" width="480" height="480" loading="lazy" alt="Post: the premise of syntax"></button><button class="zoom post" type="button" data-src="img/syntax-02.jpg" data-cap="[notes on syntax] geometric manipulation"><img src="img/syntax-02-t.jpg" width="480" height="480" loading="lazy" alt="Post: geometric manipulation"></button><button class="zoom post" type="button" data-src="img/syntax-03.jpg" data-cap="[notes on syntax] abstract reasoning"><img src="img/syntax-03-t.jpg" width="480" height="480" loading="lazy" alt="Post: abstract reasoning"></button><button class="zoom post" type="button" data-src="img/syntax-04.jpg" data-cap="[notes on syntax] knowing when to deviate"><img src="img/syntax-04-t.jpg" width="480" height="480" loading="lazy" alt="Post: knowing when to deviate"></button></div></div></div></section><section class="sec" id="complexity"><div class="wrap grid"><div class="lab"><h2>[notes on complexity]<span class="num">[03]</span></h2><p class="blurb">On the difference between complexity and complication: contradiction, friction and the void as the real sources of depth.</p></div><div class="body"><article class="note-e" id="complexity-complication-for-the-sake-of-complexity"><h3><span class="k">03.1</span>[complication for the sake of complexity]</h3><div class="txt"><p>most of the designers out there are merely complicating their failures. adding &quot;stuff&quot; to a building is not an act of design, it is a mask for a lack of logic or narrative. complexity is an internal state of being, a density of spatial relationships. complication is just noise. if your &quot;complex&quot; form can be stripped away without collapsing the logic of the project, you haven&#x27;t designed a building. you’ve designed a costume.</p></div></article><article class="note-e" id="complexity-the-venturian-both-and"><h3><span class="k">03.2</span>[the venturian “both-and”]</h3><div class="txt"><p>architecture is the art of the contradiction. we reject the “either-or” of the functionalist and adapt the “both-and” of the post-modernist. a space must be both public and private, both solid and void, both logic and accident. this internal juxtaposition is the friction that creates energy. it breaks the monotony of the architecture, and creates internal friction within its elements. if your building is easy to understand, it is boring. if it is trying to be &quot;pure&quot;, it is a lie.</p></div></article><article class="note-e" id="complexity-the-counter-intuitive-subtraction"><h3><span class="k">03.3</span>[the counter-intuitive subtraction]</h3><div class="txt"><p>addition is the tool of the amateur. true complexity is found in the void, the strategic removal of mass to reveal the syntax beneath. we subtract to create tension. we cut into the form to expose the site’s nature. whether it is the structure being revealed through the flesh (mass) of the building or the naked columns and beams piercing violently through the site’s contours, it is a powerful act of complexity.</p></div></article><div class="posts-h tag">The original posts</div><div class="posts"><button class="zoom post" type="button" data-src="img/complexity-00.jpg" data-cap="[notes on complexity] [03], cover"><img src="img/complexity-00-t.jpg" width="480" height="480" loading="lazy" alt="[notes on complexity] cover slide"></button><button class="zoom post" type="button" data-src="img/complexity-01.jpg" data-cap="[notes on complexity] complication for the sake of complexity"><img src="img/complexity-01-t.jpg" width="480" height="480" loading="lazy" alt="Post: complication for the sake of complexity"></button><button class="zoom post" type="button" data-src="img/complexity-02.jpg" data-cap="[notes on complexity] the venturian “both-and”"><img src="img/complexity-02-t.jpg" width="480" height="480" loading="lazy" alt="Post: the venturian “both-and”"></button><button class="zoom post" type="button" data-src="img/complexity-03.jpg" data-cap="[notes on complexity] the counter-intuitive subtraction"><img src="img/complexity-03-t.jpg" width="480" height="480" loading="lazy" alt="Post: the counter-intuitive subtraction"></button></div></div></div></section><section class="sec" id="originality"><div class="wrap grid"><div class="lab"><h2>[notes on originality]<span class="num">[04]</span></h2><p class="blurb">On what originality actually is: the cave, the wheel, what it means to steal rather than copy, and why it comes down to honesty and attention.</p></div><div class="body"><article class="note-e" id="originality-what-it-is"><h3><span class="k">04.1</span>[what it is]</h3><div class="txt"><p>being original is the highest moral ground any human being could take whilst making something. it is not extravagant or flashy. it is grounded. more often than not, it is boring. it does not announce itself. originality is not self-imposed nor forced. it arises truly out of life experiences, observations and reasoning. the cave was original not because it was invented, but because it was discovered. man looked at a hollow in the rock and thought of it as shelter. that act of recognition, born purely out of necessity, was the first original thought in architecture.</p></div></article><article class="note-e" id="originality-the-wheel"><h3><span class="k">04.2</span>[the wheel]</h3><div class="txt"><p>the wheel is essentially a circle. but man did not invent the circle, it already existed in nature. what man did was reason instead. what would happen if it turned? what if a circle became a cylinder and moved? that is originality. not magically appearing from nothing, but taking what already exists and reasoning it into something it had never been before. originality is not about raw material. it is about the thought applied to it.</p></div></article><article class="note-e" id="originality-sincerity-and-theft"><h3><span class="k">04.3</span>[sincerity and theft]</h3><div class="txt"><p>“good artists copy. great artists steal.” – pablo picasso. it is one of the most misunderstood lines ever spoken about making. it does not mean plagiarize. it does not mean take credit for another man&#x27;s work. it means something far more precise. the caveman stole the idea that a hollow cavity in a rock could be shelter. he did not copy the rock, he stole its logic. the wheel maker stole the circle from nature. the circle was not his invention. but the reasoning, that a circle, oriented in a certain direction and set in motion, could bear weight, that was entirely his.</p><p>to copy is to imitate the surface. to paint loose fragmented figures is not cubism, it is the appearance of cubism. but to steal cubism, to take its core argument that a thing can be understood from multiple positions simultaneously, and to apply that logic to the plan, the section, and the form of a building, that is what corbusier did. he did not paint like picasso. he thought like him. that is the difference.</p></div></article><article class="note-e" id="originality-sincerity-and-theft-continued"><h3><span class="k">04.4</span>[sincerity and theft, continued]</h3><div class="txt"><p>but what if you arrive at the wheel entirely on your own with no knowledge of it, no reference, purely through your own observation and reasoning and then discover it already existed? was the thought not original because someone else had it first?</p><p>it was completely original. the originality was never in the object. it was in the process of mind that produced it. the problem only arises when you know. when you have seen the wheel and then you make the wheel and call it your own, that is where originality collapses into dishonesty. this is why originality demands self-awareness above everything else. you have to know what you have absorbed and what you have genuinely reasoned yourself. most people don&#x27;t.</p></div></article><article class="note-e" id="originality-breaking-the-box"><h3><span class="k">04.5</span>[breaking the box]</h3><div class="txt"><p>if originality is grounded, rooted in necessity and honesty, then how do you account for gehry, libeskind or gunther? forms that seem to defy every convention, that look like they arrived from somewhere beyond reasoning. are they not the opposite of grounded? no. they are the logical conclusion of a very specific philosophical question: what if the object itself is the argument? deconstructivism did not begin with titanium panels or impossible geometries. it began with derrida, with the argument that nothing carries a fixed, stable meaning. that every structure, every text, every form contains within it contradictions it cannot resolve.</p></div></article><article class="note-e" id="originality-making-sense-of-it"><h3><span class="k">04.6</span>[making sense of it]</h3><div class="txt"><p>i don&#x27;t fully understand originality yet. i&#x27;m not sure anyone does. but the more i think about it, the more it stops being about forms or ideas or novelties and becomes about something much harder to fake. authenticity. self-awareness. a genuine urge to observe and to solve. not the performance of those things. the actual condition of them. because you can study every original mind in history and walk away with nothing if you are not first honest about what problem you actually need to solve. the cave was not original because it was unprecedented. it was original because the man who found it was genuinely cold. that is the whole thing. originality is not a methodology or a stance. it is what happens when a person is paying real attention and refuses to stop until something true comes out of it. everything else, the form, the style, the language is just perhaps the residue of that process made visible.</p></div></article><div class="posts-h tag">The original posts</div><div class="posts"><button class="zoom post" type="button" data-src="img/originality-00.jpg" data-cap="[notes on originality] [04], cover"><img src="img/originality-00-t.jpg" width="480" height="480" loading="lazy" alt="[notes on originality] cover slide"></button><button class="zoom post" type="button" data-src="img/originality-01.jpg" data-cap="[notes on originality] what it is"><img src="img/originality-01-t.jpg" width="480" height="480" loading="lazy" alt="Post: what it is"></button><button class="zoom post" type="button" data-src="img/originality-02.jpg" data-cap="[notes on originality] the wheel"><img src="img/originality-02-t.jpg" width="480" height="480" loading="lazy" alt="Post: the wheel"></button><button class="zoom post" type="button" data-src="img/originality-03.jpg" data-cap="[notes on originality] sincerity and theft"><img src="img/originality-03-t.jpg" width="480" height="480" loading="lazy" alt="Post: sincerity and theft"></button><button class="zoom post" type="button" data-src="img/originality-04.jpg" data-cap="[notes on originality] sincerity and theft, continued"><img src="img/originality-04-t.jpg" width="480" height="480" loading="lazy" alt="Post: sincerity and theft, continued"></button><button class="zoom post" type="button" data-src="img/originality-05.jpg" data-cap="[notes on originality] breaking the box"><img src="img/originality-05-t.jpg" width="480" height="480" loading="lazy" alt="Post: breaking the box"></button><button class="zoom post" type="button" data-src="img/originality-06.jpg" data-cap="[notes on originality] making sense of it"><img src="img/originality-06-t.jpg" width="480" height="480" loading="lazy" alt="Post: making sense of it"></button></div></div></div></section><section class="sec" id="tectonics"><div class="wrap grid"><div class="lab"><h2>[notes on tectonics]<span class="num">[05]</span></h2><p class="blurb">On tectonics as legibility: exposing the frame, reading the joint, trusting intuition before calculation, and finding architecture in the clash.</p></div><div class="body"><article class="note-e" id="tectonics-early-thinking"><h3><span class="k">05.1</span>[early thinking]</h3><div class="txt"><p>it all started with the art of exposing the structure. i didn’t fully understand it at first but it began as a stylistic choice, merely exposing R.C.C columns and beams as a way of staying honest to the design. but was it actually stylistic, if i was reading the frame not as expression but as an intuitive gesture, understanding how the loads actually distributed through the building? the structure was exposed not because it looked good, but because that’s what made the design legible.</p></div></article><article class="note-e" id="tectonics-gehry-s-tectonics"><h3><span class="k">05.2</span>[gehry’s tectonics]</h3><div class="txt"><p>gehry was an early reference point for this in his own santa monica house in 1978. he wrapped a plain pink bungalow in a new skin of corrugated metal and plywood, and where the new skin met the old house, he did not hide the seam. he ran chain-link fencing across it, standard fencing hardware, the same posts, top rail, and tension wires you&#x27;d find around junkyards. the joinery wasn&#x27;t disguised as architecture. it was a fence doing its job, connecting two things that did not belong together and making no attempt to pretend otherwise. materials stayed as assembly, not superficial cosmetics.</p></div></article><article class="note-e" id="tectonics-designing"><h3><span class="k">05.3</span>[designing]</h3><div class="txt"><p>tectonic logic reads at the joint, where one piece stops and another begins, additive, legible and honest about its own assembly. that’s exactly the design language i lean into now. i am not thinking about how pretty an i-beam looks as a potential staircase, i&#x27;m thinking about how i can juxtapose it against the nails, bolts and a wall that ruptures straight through it. and that rupture, where a wall thrashes into a stair, has to produce a joinery connection that is visible, that reads and that also does the real work, whether it&#x27;s load transfer, circulation, or whatever the site wants. nothing gets to be decorative alone.</p></div></article><article class="note-e" id="tectonics-the-math"><h3><span class="k">05.4</span>[the math]</h3><div class="txt"><p>none of this starts from calculation. it starts from the feeling. this might sound counter intuitive, but it&#x27;s true. does the connection feel like it could stand, does the load’s path to the ground make sense to the eye, before an engineer confirms it on paper. that intuitive sense is exactly what lets me push unorthodox moves and still make them legible. the i-beam as a staircase, the wall that ruptures through it, it destabilizes the architecture, but it still resolves structurally because it&#x27;s legible, even if there is no math to confirm it yet. but even if the structure needs corrections, that is when the design starts to take its actual resolved form, because now it&#x27;s not just legible, it&#x27;s buildable.</p></div></article><article class="note-e" id="tectonics-the-art"><h3><span class="k">05.5</span>[the art]</h3><div class="txt"><p>so tectonics, to me, is making a building or any architecture legible. not decorated, nor composed to look a certain way. it is the art of assembling the materials, the structure, the envelope in such a way that it not only seems integrated, but is a direct response to the site. the design must immediately read as a permanent part of the site, even if you are intentionally juxtaposing. the actual impact of the tectonics is revealed when materials collide, or when two grid structures collide because that is where you reveal the joinery at the impact of the collision. but my idea of tectonics does not stop at the joint. i am more interested to explore the clash, the rupture and collision because that’s where architecture starts becoming provocative.</p></div></article><div class="posts-h tag">The original posts</div><div class="posts"><button class="zoom post" type="button" data-src="img/tectonics-00.jpg" data-cap="[notes on tectonics] [05], cover"><img src="img/tectonics-00-t.jpg" width="480" height="480" loading="lazy" alt="[notes on tectonics] cover slide"></button><button class="zoom post" type="button" data-src="img/tectonics-01.jpg" data-cap="[notes on tectonics] early thinking"><img src="img/tectonics-01-t.jpg" width="480" height="480" loading="lazy" alt="Post: early thinking"></button><button class="zoom post" type="button" data-src="img/tectonics-02.jpg" data-cap="[notes on tectonics] gehry’s tectonics"><img src="img/tectonics-02-t.jpg" width="480" height="480" loading="lazy" alt="Post: gehry’s tectonics"></button><button class="zoom post" type="button" data-src="img/tectonics-03.jpg" data-cap="[notes on tectonics] designing"><img src="img/tectonics-03-t.jpg" width="480" height="480" loading="lazy" alt="Post: designing"></button><button class="zoom post" type="button" data-src="img/tectonics-04.jpg" data-cap="[notes on tectonics] the math"><img src="img/tectonics-04-t.jpg" width="480" height="480" loading="lazy" alt="Post: the math"></button><button class="zoom post" type="button" data-src="img/tectonics-05.jpg" data-cap="[notes on tectonics] the art"><img src="img/tectonics-05-t.jpg" width="480" height="480" loading="lazy" alt="Post: the art"></button></div></div></div></section>
+</main>
+
+<section class="next">
+  <div class="wrap">
+    <span class="tag">More from the studio</span>
+    <a href="../#work">[see the work] <span class="ar">→</span></a>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span class="tag">© 2026 wajiasimstudio</span><span class="tag">Rawalpindi, Pakistan</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+  <button class="x" type="button" id="lbx">Close</button>
+  <button class="pv" type="button" id="lbp" aria-label="Previous image">←</button>
+  <button class="nx" type="button" id="lbn" aria-label="Next image">→</button>
+</div>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.zoom')), lb=document.getElementById('lb'), img=document.getElementById('lbimg'), cap=document.getElementById('lbcap'), i=0, last=null;
+  function show(k){i=(k+items.length)%items.length;var b=items[i];img.src=b.dataset.src;img.alt=b.dataset.cap;cap.textContent=b.dataset.cap;}
+  function open(k){last=document.activeElement;show(k);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus();}
+  function close(){lb.hidden=true;document.body.style.overflow='';if(last)last.focus();}
+  items.forEach(function(b,k){b.addEventListener('click',function(){open(k);});});
+  document.getElementById('lbx').onclick=close;
+  document.getElementById('lbp').onclick=function(){show(i-1);};
+  document.getElementById('lbn').onclick=function(){show(i+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
+
+
+<script src="../assets/polish.js" defer></script>
+</body>
+</html>

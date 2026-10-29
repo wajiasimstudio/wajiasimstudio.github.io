@@ -172,6 +172,10 @@ html.js .head.rv:not(.in)::after{transform:scaleX(0)}
 .email:hover{background-size:100% 4px}
 button.copy{transition:background .3s,color .3s}
 .row a{transition:border-color .3s}
+.note .more{margin-top:auto;font-family:var(--display);font-weight:700;text-decoration:none;color:var(--white);border-bottom:2px solid var(--red);align-self:flex-start;padding-bottom:2px;transition:color .3s}
+.note .more:hover{color:var(--red)}
+.note .more .ar{display:inline-block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.note .more:hover .ar{transform:translateX(6px)}
 .totop{text-decoration:none}
 .totop:hover{color:var(--red)}
 </style>
@@ -239,9 +243,10 @@ button.copy{transition:background .3s,color .3s}
       <p class="intro">Alongside built and speculative work, the studio publishes ongoing research into architectural theory and tectonics.</p>
       <div class="notes">
         <div class="note">
-          <span class="tag">Essay series</span>
-          <h3>Notes On</h3>
-          <p>Short essays on originality, deconstructivism, provocation and tectonics, built around simple questions that test assumptions architects rarely examine.</p>
+          <span class="tag">Essay series · 5 sets</span>
+          <h3>[logic.series]</h3>
+          <p>Short essays on form, syntax, complexity, originality and tectonics, built around simple questions that test assumptions architects rarely examine.</p>
+          <a class="more" href="logic-series/">[read the series] <span class="ar">→</span></a>
         </div>
         <div class="note">
           <span class="tag">Prototype series · 5 dwellings</span>
