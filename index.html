@@ -178,25 +178,83 @@ button.copy{transition:background .3s,color .3s}
 .note .more:hover .ar{transform:translateX(6px)}
 .totop{text-decoration:none}
 .totop:hover{color:var(--red)}
+
+/* === drawn-grid pass === */
+.hero-band{position:relative;overflow:hidden;background:radial-gradient(120% 100% at 72% 30%,#ff1f1f 0%,#ff0000 45%,#d80000 100%)}
+.grids{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.hero{position:relative;z-index:1}
+.hero-meta{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.45);margin-top:28px;padding-top:14px;opacity:.9}
+.hero-meta a{text-decoration:none}
+.hero-meta a:hover{color:var(--black)}
+#coord{font-variant-numeric:tabular-nums;min-width:19ch}
+nav a sup{font-family:var(--mono);font-weight:400;font-size:.58rem;margin-right:3px;opacity:.75;vertical-align:.55em}
+.topbar{transition:box-shadow .4s}
+html.scrolled .topbar{box-shadow:0 1px 0 rgba(0,0,0,.18),0 12px 30px -18px rgba(0,0,0,.35)}
+.btn{position:relative;overflow:hidden;z-index:0}
+.btn::before{content:"";position:absolute;inset:0;background:var(--black);transform:translateY(101%);transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1}
+.btn:hover{background:transparent!important;border-color:var(--black)}
+.btn.solid:hover{background:transparent!important}
+.btn:hover::before{transform:none}
+/* cards: hairline frame + drawing crop marks */
+.slot.proj{border:0;overflow:hidden;isolation:isolate}
+.slot.proj .cm{position:absolute;width:16px;height:16px;z-index:3;pointer-events:none;border:0 solid rgba(255,255,255,.85);transition:transform .6s cubic-bezier(.2,.7,.2,1),border-color .4s}
+.slot.proj .cm.tl{top:12px;left:12px;border-top-width:1.5px;border-left-width:1.5px}
+.slot.proj .cm.tr{top:12px;right:12px;border-top-width:1.5px;border-right-width:1.5px}
+.slot.proj .cm.bl{bottom:12px;left:12px;border-bottom-width:1.5px;border-left-width:1.5px}
+.slot.proj .cm.br{bottom:12px;right:12px;border-bottom-width:1.5px;border-right-width:1.5px}
+.slot.proj:hover .cm.tl{transform:translate(-6px,-6px)}.slot.proj:hover .cm.tr{transform:translate(6px,-6px)}
+.slot.proj:hover .cm.bl{transform:translate(-6px,6px)}.slot.proj:hover .cm.br{transform:translate(6px,6px)}
+.slot.proj .n{margin:8px 0 0 8px}.slot.proj .t{margin:0 0 8px 8px}.slot.proj .arr{top:22px;right:28px}
+.slot.proj{box-shadow:0 0 0 rgba(0,0,0,0);transition:box-shadow .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.slot.proj:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.55);transform:translateY(-4px)}
+.slots{gap:36px}
+/* research band: the second grid, faintly */
+#research{position:relative;background:
+  repeating-linear-gradient(35deg,rgba(255,255,255,.035) 0 1px,transparent 1px 56px),
+  repeating-linear-gradient(125deg,rgba(255,255,255,.035) 0 1px,transparent 1px 56px),
+  radial-gradient(80% 120% at 85% 0%,#1d1d1f 0%,#0b0b0b 60%)}
+.note{transition:background .5s}
+.note:hover{background:rgba(255,255,255,.03)}
+/* contact */
+#contact{position:relative;overflow:hidden;background:radial-gradient(110% 120% at 20% 100%,#ff1f1f 0%,#ff0000 45%,#d80000 100%)}
+#contact::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 1px,transparent 1px 56px),
+  repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,transparent 1px 56px);
+  -webkit-mask-image:radial-gradient(60% 80% at 80% 30%,#000,transparent);mask-image:radial-gradient(60% 80% at 80% 30%,#000,transparent)}
+#contact .wrap{position:relative}
+/* intro curtain */
+.curtain{position:fixed;inset:0;z-index:90;background:var(--red);color:var(--white);display:none;align-items:center;pointer-events:none}
+html.curtain-on .curtain{display:flex;animation:cur 1.5s cubic-bezier(.7,0,.2,1) .9s forwards}
+.curtain .wrap{width:100%;display:flex;flex-direction:column;font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,7vw,5rem);line-height:1;letter-spacing:-.03em;position:relative}
+.curtain .cw{display:block;animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+.curtain .cw:nth-child(2){animation-delay:.08s}
+.curtain .st2{transform-origin:0 0;animation:up .7s cubic-bezier(.2,.7,.2,1) .16s both}
+.curtain .cl{position:absolute;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:-28px;height:1px;background:rgba(255,255,255,.7);transform-origin:0 50%;animation:ln .9s cubic-bezier(.7,0,.2,1) both}
+@keyframes ln{from{transform:scaleX(0)}}
+@keyframes cur{to{transform:translateY(-100%)}}
+@media (prefers-reduced-motion:reduce){html.curtain-on .curtain{display:none}}
+@media (max-width:820px){.hero-meta span:nth-child(2){display:none}.slots{gap:28px}}
 </style>
 <style>body{margin:0}</style>
 <link rel="stylesheet" href="assets/polish.css">
 </head>
 <body>
+<div class="curtain" id="curtain" aria-hidden="true"><div class="wrap"><span class="cw">[waji]</span><span class="cw">[asim]</span><span class="cw st2">[studio]</span><i class="cl"></i></div></div>
 
 
 <div class="band-red topbar">
   <div class="wrap bar">
     <a class="mark" href="#top">[wajiasimstudio]</a>
     <nav>
-      <a href="#work">[work]</a>
-      <a href="#research">[research]</a>
-      <a href="#about">[about]</a>
-      <a href="#contact">[contact]</a>
+      <a href="#work"><sup>01</sup>[work]</a>
+      <a href="#research"><sup>02</sup>[research]</a>
+      <a href="#about"><sup>03</sup>[about]</a>
+      <a href="#contact"><sup>04</sup>[contact]</a>
     </nav>
   </div>
 </div>
-<div class="band-red">
+<div class="band-red hero-band">
+  <canvas class="grids" id="grids" aria-hidden="true"></canvas>
   <header class="wrap hero" id="top">
     <div class="hero-grid">
       <h1 class="logo" aria-label="wajiasimstudio">
@@ -218,6 +276,7 @@ button.copy{transition:background .3s,color .3s}
         </div>
       </div>
     </div>
+    <div class="hero-meta tag" aria-hidden="true"><span>[33.60°N · 73.04°E]</span><span>[grid a · 0°] [grid b · 35°]</span><span id="coord">[x 0000 · y 0000]</span><a href="#work">[scroll] ↓</a></div>
   </header>
 </div>
 <div class="ticker" aria-hidden="true"><div><span>[architecture]</span><span>[research]</span><span>[discourse]</span><span>[critical theory]</span><span>[deconstruction]</span><span>[tectonics]</span><span>[culture]</span><span>[rawalpindi]</span><span>[architecture]</span><span>[research]</span><span>[discourse]</span><span>[critical theory]</span><span>[deconstruction]</span><span>[tectonics]</span><span>[culture]</span><span>[rawalpindi]</span></div></div>
@@ -228,11 +287,11 @@ button.copy{transition:background .3s,color .3s}
       <div class="head"><h2>[work]</h2><span class="tag">2023–2026</span></div>
       <p class="intro">Selected projects in cultural, healthcare, hospitality and urban design. More projects will be added here soon.</p>
       <div class="slots">
-        <a class="slot proj" href="concert-hall/"><img src="concert-hall/img/thumb.jpg" alt="" loading="lazy"><span class="arr" aria-hidden="true">→</span><span class="n">[01]</span><span class="t">A Tale of the Twin Cities<small>Concert hall, Shakarparian, Islamabad · B.Arch thesis</small></span></a>
-        <a class="slot proj" href="hospital/"><img src="hospital/img/thumb.jpg" alt="" loading="lazy"><span class="arr" aria-hidden="true">→</span><span class="n">[02]</span><span class="t">The Architecture of Surgical Forms<small>250-bed hospital, River Ravi, Lahore</small></span></a>
-        <a class="slot proj" href="urban/"><img src="urban/img/thumb.jpg" alt="" loading="lazy"><span class="arr" aria-hidden="true">→</span><span class="n">[03]</span><span class="t">Form, Space, and Urbanism<small>Urban housing society, Lahore · Best Studio Project 2024</small></span></a>
-        <a class="slot proj" href="hotel/"><img src="hotel/img/thumb.jpg" alt="" loading="lazy"><span class="arr" aria-hidden="true">→</span><span class="n">[04]</span><span class="t">Hotel<small>120-room hotel, Egerton Road, Lahore</small></span></a>
-        <a class="slot proj" href="culture-centre/"><img src="culture-centre/img/hero.jpg" alt="" loading="lazy"><span class="arr" aria-hidden="true">→</span><span class="n">[05]</span><span class="t">Cairo Culture Centre<small>Culture centre, Egerton Road, Lahore · Selected for exhibition</small></span></a>
+        <a class="slot proj" href="concert-hall/"><img src="concert-hall/img/thumb.jpg" alt="" loading="lazy"><i class="cm tl"></i><i class="cm tr"></i><i class="cm bl"></i><i class="cm br"></i><span class="arr" aria-hidden="true">→</span><span class="n">[01]</span><span class="t">A Tale of the Twin Cities<small>Concert hall, Shakarparian, Islamabad · B.Arch thesis</small></span></a>
+        <a class="slot proj" href="hospital/"><img src="hospital/img/thumb.jpg" alt="" loading="lazy"><i class="cm tl"></i><i class="cm tr"></i><i class="cm bl"></i><i class="cm br"></i><span class="arr" aria-hidden="true">→</span><span class="n">[02]</span><span class="t">The Architecture of Surgical Forms<small>250-bed hospital, River Ravi, Lahore</small></span></a>
+        <a class="slot proj" href="urban/"><img src="urban/img/thumb.jpg" alt="" loading="lazy"><i class="cm tl"></i><i class="cm tr"></i><i class="cm bl"></i><i class="cm br"></i><span class="arr" aria-hidden="true">→</span><span class="n">[03]</span><span class="t">Form, Space, and Urbanism<small>Urban housing society, Lahore · Best Studio Project 2024</small></span></a>
+        <a class="slot proj" href="hotel/"><img src="hotel/img/thumb.jpg" alt="" loading="lazy"><i class="cm tl"></i><i class="cm tr"></i><i class="cm bl"></i><i class="cm br"></i><span class="arr" aria-hidden="true">→</span><span class="n">[04]</span><span class="t">Hotel<small>120-room hotel, Egerton Road, Lahore</small></span></a>
+        <a class="slot proj" href="culture-centre/"><img src="culture-centre/img/hero.jpg" alt="" loading="lazy"><i class="cm tl"></i><i class="cm tr"></i><i class="cm bl"></i><i class="cm br"></i><span class="arr" aria-hidden="true">→</span><span class="n">[05]</span><span class="t">Cairo Culture Centre<small>Culture centre, Egerton Road, Lahore · Selected for exhibition</small></span></a>
       </div>
     </div>
   </section>
@@ -324,6 +383,63 @@ document.getElementById('copyBtn').addEventListener('click', function () {
 });
 </script>
 
+
+<script>
+(function(){
+  var h=document.documentElement;
+  try{ if(!sessionStorage.getItem('wss_intro')){ h.classList.add('curtain-on'); sessionStorage.setItem('wss_intro','1'); setTimeout(function(){h.classList.remove('curtain-on');},2600);} }catch(e){}
+  var cv=document.getElementById('grids'), band=cv.parentElement, ctx=cv.getContext('2d'), co=document.getElementById('coord');
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches, dpr=Math.min(window.devicePixelRatio||1,2);
+  var W=0,H=0,S=56,T=35*Math.PI/180, t0=performance.now(), mx=null,my=null, ax=0,ay=0, live=false, raf=0, inView=true;
+  function size(){ var r=band.getBoundingClientRect(); W=r.width; H=r.height; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  function lineSet(angle,alpha,p,ox,oy){
+    var c=Math.cos(angle), s=Math.sin(angle), R=Math.hypot(W,H), n=Math.ceil(R/S)+2;
+    ctx.strokeStyle='rgba(255,255,255,'+alpha+')'; ctx.lineWidth=1; ctx.beginPath();
+    for(var i=-n;i<=n;i++){
+      for(var k=0;k<2;k++){
+        var ux=k?c:-s, uy=k?s:c, vx=k?-s:c, vy=k?c:s;
+        var px=ox+vx*i*S, py=oy+vy*i*S, L=R*p, dir=(i%2?1:-1);
+        ctx.moveTo(px-ux*R*dir, py-uy*R*dir); ctx.lineTo(px-ux*R*dir+ux*2*L*dir, py-uy*R*dir+uy*2*L*dir);
+      }
+    }
+    ctx.stroke();
+  }
+  function draw(now){
+    raf=0; var p=rm?1:Math.min(1,(now-t0)/1800); var e=1-Math.pow(1-p,3);
+    ctx.clearRect(0,0,W,H);
+    var cx=W*.62, cy=H*.42;
+    lineSet(0,.09,e,0,0);
+    lineSet(T,.12,e,cx,cy);
+    var x=mx, y=my;
+    if(x===null){ var tt=now/1000; x=W*(.62+.22*Math.sin(tt*.31)); y=H*(.45+.25*Math.sin(tt*.47)); }
+    ax+= (x-ax)*.12; ay+=(y-ay)*.12;
+    var a=Math.min(1,e*1.2);
+    // regulating lines through the cursor: one per grid
+    ctx.lineWidth=1;
+    ctx.strokeStyle='rgba(255,255,255,'+(.55*a)+')'; ctx.beginPath(); ctx.moveTo(0,ay); ctx.lineTo(W,ay); ctx.moveTo(ax,0); ctx.lineTo(ax,H); ctx.stroke();
+    var c=Math.cos(T), s=Math.sin(T), R=Math.hypot(W,H);
+    ctx.strokeStyle='rgba(11,11,11,'+(.5*a)+')'; ctx.setLineDash([6,6]); ctx.beginPath();
+    ctx.moveTo(ax-c*R,ay-s*R); ctx.lineTo(ax+c*R,ay+s*R); ctx.moveTo(ax+s*R,ay-c*R); ctx.lineTo(ax-s*R,ay+c*R); ctx.stroke(); ctx.setLineDash([]);
+    // collision nodes near the cursor (grid a intersections)
+    var gx=Math.round(ax/S)*S, gy=Math.round(ay/S)*S;
+    for(var i=-3;i<=3;i++)for(var j=-3;j<=3;j++){
+      var nx=gx+i*S, ny=gy+j*S, d=Math.hypot(nx-ax,ny-ay), f=Math.max(0,1-d/(S*3.2));
+      if(f>0){ ctx.fillStyle='rgba(255,255,255,'+(f*.9*a)+')'; var z=2+f*3; ctx.fillRect(nx-z/2,ny-z/2,z,z); }
+    }
+    // the point itself: a selected node with handles
+    ctx.strokeStyle='rgba(255,255,255,'+a+')'; ctx.lineWidth=1.5; ctx.strokeRect(ax-7,ay-7,14,14);
+    ctx.fillStyle='rgba(11,11,11,'+a+')'; ctx.fillRect(ax-2,ay-2,4,4);
+    if(co){ var X=Math.round(ax/W*1000), Y=Math.round(ay/H*1000); co.textContent='[x '+('000'+X).slice(-4)+' · y '+('000'+Y).slice(-4)+']'; }
+    if(!rm && inView) raf=requestAnimationFrame(draw);
+  }
+  function kick(){ if(!raf) raf=requestAnimationFrame(draw); }
+  size(); ax=W*.62; ay=H*.45; kick();
+  addEventListener('resize',function(){size();kick();});
+  band.addEventListener('pointermove',function(ev){ if(ev.pointerType!=='mouse')return; var r=band.getBoundingClientRect(); mx=ev.clientX-r.left; my=ev.clientY-r.top; kick(); });
+  band.addEventListener('pointerleave',function(){ mx=my=null; });
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ inView=es[0].isIntersecting; if(inView) kick(); }).observe(band);
+})();
+</script>
 <script src="assets/polish.js" defer></script>
 </body>
 </html>

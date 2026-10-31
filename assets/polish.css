@@ -31,3 +31,6 @@ nav a:hover::after,nav a.on::after,.toc a:hover::after,.toc a.on::after{transfor
   .hero img,.lb:not([hidden]),.lb img.in{animation:none}
   .fig .zoom:hover img,.slot.proj:hover img,.portrait:hover img{transform:none}
 }
+
+/* paper grain */
+body::after{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
